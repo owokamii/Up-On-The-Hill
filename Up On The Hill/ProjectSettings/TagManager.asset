@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Blur
   - 
   - 
   - 
@@ -40,4 +40,28 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3885712555
+    locked: 0
+  - name: BackForest
+    uniqueID: 255560181
+    locked: 0
+  - name: MidForest
+    uniqueID: 3055537475
+    locked: 0
+  - name: FrontForest
+    uniqueID: 1807723867
+    locked: 0
+  - name: BackMidground
+    uniqueID: 3453045245
+    locked: 0
+  - name: Player
+    uniqueID: 2373505533
+    locked: 0
+  - name: FrontMidground
+    uniqueID: 3966648609
+    locked: 0
+  - name: Foreground
+    uniqueID: 234692331
     locked: 0
