@@ -8,13 +8,15 @@ public class DadInteract : MonoBehaviour
 
     [Header("Game Objects")]
     [SerializeField] private GameObject speechBubble;
-    [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private GameObject[] dialogueBox;
 
     [Header("Scripts")]
     [SerializeField] private DialogueSystem dialogueSystem;
+    [SerializeField] private GateInteract gateInteract;
 
     private bool interacted = false;
     private bool inRange = false;
+    private int pos = 0;
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class DadInteract : MonoBehaviour
     {
         if (inRange)
         {
-            if (!dialogueBox.activeSelf && interacted)
+            if (!dialogueBox[pos].activeSelf && interacted)
             {
                 EndDialogue();
             }
@@ -34,6 +36,8 @@ public class DadInteract : MonoBehaviour
                 StartDialogue();
             }
         }
+
+        UpdateDialogueBox();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,8 +54,7 @@ public class DadInteract : MonoBehaviour
 
     private void ActivateDialogue()
     {
-        dialogueBox.SetActive(true);
-        //dialogueSystem.enabled = true;
+        dialogueBox[pos].SetActive(true);
     }
 
     private void SpeechBubbleDisable()
@@ -67,7 +70,7 @@ public class DadInteract : MonoBehaviour
     private void StartDialogue()
     {
         interacted = true;
-        Debug.Log("test 1");
+        Debug.Log("start");
         cinematicAnimator.SetBool("Cinematic", true);   // black bars enable
         dadAnimator.SetBool("Interacted", true);        // dad changes animation
         Invoke("ActivateDialogue", 0);               // dialogue starts
@@ -76,8 +79,16 @@ public class DadInteract : MonoBehaviour
     private void EndDialogue()
     {
         interacted = false;
-        Debug.Log("test 2");
+        Debug.Log("end");
         dadAnimator.SetBool("Interacted", false);           // dad changes animation
         cinematicAnimator.SetBool("Cinematic", false);      // black bars disable                                                    
+    }
+
+    private void UpdateDialogueBox()
+    {
+        if(gateInteract.GetDadDialogue1)
+        {
+            pos = 1;
+        }
     }
 }

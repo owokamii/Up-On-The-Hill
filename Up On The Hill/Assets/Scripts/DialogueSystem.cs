@@ -1,12 +1,14 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
 {
     //AudioManager audioManager;
 
     [SerializeField] private TextMeshProUGUI textComponent;
+    [SerializeField] private Image icon;
     [SerializeField] private string[] lines;
     [SerializeField] private float textSpeed = 0.05f;
 
@@ -35,6 +37,7 @@ public class DialogueSystem : MonoBehaviour
             {
                 StopAllCoroutines();
                 textComponent.text = string.Empty;
+                UpdateIconPosition();
             }
         }
     }
@@ -58,6 +61,7 @@ public class DialogueSystem : MonoBehaviour
     private void StartDialogue()
     {
         index = 0;
+        icon.enabled = true;
         StartCoroutine(TypeLine());
     }
 
@@ -66,6 +70,7 @@ public class DialogueSystem : MonoBehaviour
         foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
+            UpdateIconPosition();
             //audioManager.PlaySFX(audioManager.sfx[0]);
             yield return new WaitForSeconds(textSpeed);
         }
@@ -87,9 +92,28 @@ public class DialogueSystem : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                icon.enabled = false;
                 textComponent.text = string.Empty;
                 gameObject.SetActive(false);
             }
+        }
+    }
+
+    private void UpdateIconPosition()
+    {
+        if (icon != null)
+        {
+            RectTransform textRT = textComponent.rectTransform;
+            RectTransform iconRT = icon.rectTransform;
+
+            // Calculate the position of the character icon relative to the text box width
+            float textWidth = textComponent.preferredWidth;
+            float iconOffset = iconRT.sizeDelta.x / 2f; // Adjust this value based on your icon's size
+
+            iconRT.anchorMin = new Vector2(0.5f, 0.5f);
+            iconRT.anchorMax = new Vector2(0.5f, 0.5f);
+            iconRT.pivot = new Vector2(0.5f, 0.5f);
+            iconRT.anchoredPosition = new Vector2(-textWidth / 2f - iconOffset, 0f);
         }
     }
 }
