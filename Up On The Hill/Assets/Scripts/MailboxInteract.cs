@@ -2,30 +2,40 @@ using UnityEngine;
 
 public class MailboxInteract : MonoBehaviour
 {
-    [Header("Animators")]
+    [Header("References")]
     [SerializeField] private Animator cinematicAnimator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite sprite;
 
     [Header("Game Objects")]
     [SerializeField] private GameObject speechBubble;
-    [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private GameObject[] dialogueBox;
+    [SerializeField] private GameObject mailPanel;
 
     [Header("Scripts")]
     [SerializeField] private DialogueSystem dialogueSystem;
+    [SerializeField] private DadInteract dadInteract;
 
     private bool interacted = false;
     private bool inRange = false;
+    private int pos = 0;
+
+    private bool dadDialogue3 = false;
+
+    public bool GetDadDialogue3 { get { return dadDialogue3; } }
 
     private void Update()
     {
         if (inRange)
         {
-            if (!dialogueBox.activeSelf && interacted)
+            if (!dialogueBox[pos].activeSelf && interacted)
             {
                 EndDialogue();
             }
 
             else if (!interacted && Input.GetKeyDown(KeyCode.Space))
             {
+                UpdateDialogue();
                 StartDialogue();
             }
         }
@@ -45,7 +55,7 @@ public class MailboxInteract : MonoBehaviour
 
     private void ActivateDialogue()
     {
-        dialogueBox.SetActive(true);
+        dialogueBox[pos].SetActive(true);
     }
 
     private void SpeechBubbleDisable()
@@ -74,6 +84,30 @@ public class MailboxInteract : MonoBehaviour
         Debug.Log("end");
         Invoke("SpeechBubbleEnable", 1.0f);
         //dadAnimator.SetBool("Interacted", false);           // dad changes animation
-        cinematicAnimator.SetBool("Cinematic", false);      // black bars disable                                                    
+        cinematicAnimator.SetBool("Cinematic", false);      // black bars disable
+        
+        if(pos == 1) // after retrieved mail
+        {
+            spriteRenderer.sprite = sprite;
+            dadDialogue3 = true;
+        }
+    }
+
+    private void UpdateDialogue()
+    {
+        if (dadInteract.GetMailboxDialogue1 && pos == 0)    // first interaction with mail
+        {
+            pos = 1;
+        }
+
+        else if (pos == 1)                                  // retrieve mail
+        {
+            pos = 2;
+        }
+    }
+
+    private void ObtainedMail()
+    {
+        mailPanel.gameObject.SetActive(true);
     }
 }

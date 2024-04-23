@@ -13,10 +13,17 @@ public class DadInteract : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private DialogueSystem dialogueSystem;
     [SerializeField] private GateInteract gateInteract;
+    [SerializeField] private MailboxInteract mailboxInteract;
 
     private bool interacted = false;
     private bool inRange = false;
     private int pos = 0;
+
+    private bool mailboxDialogue1 = false;
+    private bool gateDialogue1 = false;
+
+    public bool GetMailboxDialogue1 { get { return mailboxDialogue1; } }
+    public bool GetGateDialogue1 { get { return gateDialogue1; } }
 
     private void Awake()
     {
@@ -33,11 +40,10 @@ public class DadInteract : MonoBehaviour
 
             else if (!interacted && Input.GetKeyDown(KeyCode.Space))
             {
+                UpdateDialogue();
                 StartDialogue();
             }
         }
-
-        UpdateDialogueBox();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -81,14 +87,28 @@ public class DadInteract : MonoBehaviour
         interacted = false;
         Debug.Log("end");
         dadAnimator.SetBool("Interacted", false);           // dad changes animation
-        cinematicAnimator.SetBool("Cinematic", false);      // black bars disable                                                    
+        cinematicAnimator.SetBool("Cinematic", false);      // black bars
+
+        if(pos == 2)
+        {
+            gateDialogue1 = true;
+        }
     }
 
-    private void UpdateDialogueBox()
+    private void UpdateDialogue()
     {
-        if(gateInteract.GetDadDialogue1)
+        if (gateInteract.GetDadDialogue1 && pos == 0)           // first interaction with dad
         {
+            mailboxDialogue1 = true;
             pos = 1;
+        }
+        else if (mailboxInteract.GetDadDialogue3 && pos == 1)   // dad tell you to get mail
+        {
+            pos = 2;
+        }
+        else if(pos == 2)                                       // dad gave u the keys
+        {
+            pos = 3;
         }
     }
 }
