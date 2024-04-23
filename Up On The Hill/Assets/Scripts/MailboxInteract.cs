@@ -1,8 +1,12 @@
+using System.Runtime.InteropServices;
+using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class MailboxInteract : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private Animator letterAnimator;
     [SerializeField] private Animator cinematicAnimator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite sprite;
@@ -33,7 +37,7 @@ public class MailboxInteract : MonoBehaviour
                 EndDialogue();
             }
 
-            else if (!interacted && Input.GetKeyDown(KeyCode.Space))
+            else if (!interacted && Input.GetKeyDown(KeyCode.E))
             {
                 UpdateDialogue();
                 StartDialogue();
@@ -90,6 +94,7 @@ public class MailboxInteract : MonoBehaviour
         {
             spriteRenderer.sprite = sprite;
             dadDialogue3 = true;
+            Invoke("ObtainedMail", 1.0f);
         }
     }
 
@@ -109,5 +114,11 @@ public class MailboxInteract : MonoBehaviour
     private void ObtainedMail()
     {
         mailPanel.gameObject.SetActive(true);
+        Invoke("UnobtainedMail", 2.0f);
+    }
+
+    private void UnobtainedMail()
+    {
+        letterAnimator.SetBool("ObtainedLetter", true);
     }
 }

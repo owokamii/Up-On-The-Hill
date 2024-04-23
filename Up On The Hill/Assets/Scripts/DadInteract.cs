@@ -3,12 +3,14 @@ using UnityEngine;
 public class DadInteract : MonoBehaviour
 {
     [Header("Animators")]
+    [SerializeField] private Animator keyAnimator;
     [SerializeField] private Animator dadAnimator;
     [SerializeField] private Animator cinematicAnimator;
 
     [Header("Game Objects")]
     [SerializeField] private GameObject speechBubble;
     [SerializeField] private GameObject[] dialogueBox;
+    [SerializeField] private GameObject keyPanel;
 
     [Header("Scripts")]
     [SerializeField] private DialogueSystem dialogueSystem;
@@ -38,7 +40,7 @@ public class DadInteract : MonoBehaviour
                 EndDialogue();
             }
 
-            else if (!interacted && Input.GetKeyDown(KeyCode.Space))
+            else if (!interacted && Input.GetKeyDown(KeyCode.E))
             {
                 UpdateDialogue();
                 StartDialogue();
@@ -92,6 +94,7 @@ public class DadInteract : MonoBehaviour
         if(pos == 2)
         {
             gateDialogue1 = true;
+            Invoke("ObtainedKey", 1.0f);
         }
     }
 
@@ -110,5 +113,16 @@ public class DadInteract : MonoBehaviour
         {
             pos = 3;
         }
+    }
+
+    private void ObtainedKey()
+    {
+        keyPanel.gameObject.SetActive(true);
+        Invoke("UnobtainedMail", 2.0f);
+    }
+
+    private void UnobtainedKey()
+    {
+        keyAnimator.SetBool("ObtainedLetter", true);
     }
 }

@@ -27,7 +27,7 @@ public class DialogueSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && sentenceEnded)
+        if (Input.GetKeyDown(KeyCode.E) && sentenceEnded)
         {
             if (textComponent.text == lines[index])
             {
@@ -90,7 +90,7 @@ public class DialogueSystem : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 icon.enabled = false;
                 textComponent.text = string.Empty;

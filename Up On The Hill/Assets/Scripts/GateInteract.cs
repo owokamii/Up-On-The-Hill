@@ -33,7 +33,7 @@ public class GateInteract : MonoBehaviour
                 EndDialogue();
             }
 
-            else if (!interacted && Input.GetKeyDown(KeyCode.Space))
+            else if (!interacted && Input.GetKeyDown(KeyCode.E))
             {
                 UpdateDialogue();
                 StartDialogue();

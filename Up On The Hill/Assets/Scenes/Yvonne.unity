@@ -5371,7 +5371,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.950977, y: -0.59935, z: -10}
+  m_LocalPosition: {x: -38.94768, y: -0.59935, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13899,6 +13899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8864d9ea539c624294ad52bc3bcb876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyAnimator: {fileID: 1008508773}
   dadAnimator: {fileID: 848904291}
   cinematicAnimator: {fileID: 551208422}
   speechBubble: {fileID: 263718771}
@@ -13907,6 +13908,7 @@ MonoBehaviour:
   - {fileID: 9117850}
   - {fileID: 1732098509}
   - {fileID: 579948746}
+  keyPanel: {fileID: 1008508768}
   dialogueSystem: {fileID: 621957140}
   gateInteract: {fileID: 1461977955}
   mailboxInteract: {fileID: 1194537991}
@@ -14951,6 +14953,8 @@ GameObject:
   - component: {fileID: 989887388}
   - component: {fileID: 989887390}
   - component: {fileID: 989887389}
+  - component: {fileID: 989887392}
+  - component: {fileID: 989887391}
   m_Layer: 5
   m_Name: LetterPanel
   m_TagString: Untagged
@@ -15016,6 +15020,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989887387}
   m_CullTransparentMesh: 1
+--- !u!95 &989887391
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989887387}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b50df8c8ffba8e469e26a056467faf7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!225 &989887392
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989887387}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1001635834
 GameObject:
   m_ObjectHideFlags: 0
@@ -19865,6 +19902,8 @@ GameObject:
   - component: {fileID: 1008508769}
   - component: {fileID: 1008508771}
   - component: {fileID: 1008508770}
+  - component: {fileID: 1008508772}
+  - component: {fileID: 1008508773}
   m_Layer: 5
   m_Name: KeyPanel
   m_TagString: Untagged
@@ -19930,6 +19969,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008508768}
   m_CullTransparentMesh: 1
+--- !u!225 &1008508772
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008508768}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!95 &1008508773
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008508768}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77f0ddcb802a34747b7eb4f557ba2cb3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1017262854
 GameObject:
   m_ObjectHideFlags: 0
@@ -21107,6 +21179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa86ef4e0b77814abdda921367688c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  letterAnimator: {fileID: 989887391}
   cinematicAnimator: {fileID: 551208422}
   spriteRenderer: {fileID: 1194537988}
   sprite: {fileID: -1247610567, guid: f06914acf9afe8d40800b258b46c6e55, type: 3}
@@ -21115,6 +21188,7 @@ MonoBehaviour:
   - {fileID: 405805205}
   - {fileID: 4437704}
   - {fileID: 166440520}
+  mailPanel: {fileID: 989887387}
   dialogueSystem: {fileID: 405805207}
   dadInteract: {fileID: 848904292}
 --- !u!1 &1197078049
@@ -27847,7 +27921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1461977952
 Transform:
   m_ObjectHideFlags: 0
