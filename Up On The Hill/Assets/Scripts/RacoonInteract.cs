@@ -1,38 +1,37 @@
 using UnityEngine;
 
-public class DadInteract : MonoBehaviour
+public class RacoonInteract : MonoBehaviour
 {
     [Header("Animators")]
-    [SerializeField] private Animator keyAnimator;
-    [SerializeField] private Animator dadAnimator;
     [SerializeField] private Animator cinematicAnimator;
+    [SerializeField] private Animator racoonAnimator;
+    [SerializeField] private Animator boqAnimator;
+    [SerializeField] private SpriteRenderer sp;
+    [SerializeField] private Sprite frogSprite;
 
     [Header("Game Objects")]
     [SerializeField] private GameObject speechBubble;
     [SerializeField] private GameObject[] dialogueBox;
-    [SerializeField] private GameObject keyPanel;
+    [SerializeField] private GameObject racoon;
+    [SerializeField] private GameObject frog;
+    [SerializeField] private GameObject racoonEvent;
+    [SerializeField] private GameObject boqPanel;
+
 
     [Header("Scripts")]
-    [SerializeField] private DialogueSystem dialogueSystem;
-    [SerializeField] private GateInteract gateInteract;
-    [SerializeField] private MailboxInteract mailboxInteract;
+    //[SerializeField] private DialogueSystem dialogueSystem;
 
     private bool interacted = false;
     private bool inRange = false;
     private int pos = 0;
 
-    private bool mailboxDialogue1 = false;
-    private bool gateDialogue1 = false;
-
-    public bool GetMailboxDialogue1 { get { return mailboxDialogue1; } }
-    public bool GetGateDialogue1 { get { return gateDialogue1; } }
-
-    private void Awake()
-    {
-        dadAnimator = GetComponent<Animator>();
-    }
     private void Update()
     {
+        if(!racoon)
+        {
+            racoonAnimator.SetBool("RacoonIdle", true);
+        }
+
         if (inRange)
         {
             if (!dialogueBox[pos].activeSelf && interacted)
@@ -42,10 +41,20 @@ public class DadInteract : MonoBehaviour
 
             else if (!interacted && Input.GetKeyDown(KeyCode.E))
             {
+                if (racoonEvent)
+                {
+                    Destroy(racoonEvent);
+                }
+
                 UpdateDialogue();
                 StartDialogue();
             }
         }
+    }
+
+    private void ActivateDialogue()
+    {
+        dialogueBox[pos].SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -58,11 +67,6 @@ public class DadInteract : MonoBehaviour
     {
         inRange = false;
         speechBubble.SetActive(false);
-    }
-
-    private void ActivateDialogue()
-    {
-        dialogueBox[pos].SetActive(true);
     }
 
     private void SpeechBubbleDisable()
@@ -80,7 +84,6 @@ public class DadInteract : MonoBehaviour
         interacted = true;
         Debug.Log("start");
         cinematicAnimator.SetBool("Cinematic", true);   // black bars enable
-        dadAnimator.SetBool("Interacted", true);        // dad changes animation
         Invoke("ActivateDialogue", 0);               // dialogue starts
     }
 
@@ -88,41 +91,31 @@ public class DadInteract : MonoBehaviour
     {
         interacted = false;
         Debug.Log("end");
-        dadAnimator.SetBool("Interacted", false);           // dad changes animation
         cinematicAnimator.SetBool("Cinematic", false);      // black bars
 
-        if(pos == 2)
+       if(pos == 1)
         {
-            gateDialogue1 = true;
-            Invoke("ObtainedKey", 1.0f);
+            sp.sprite = frogSprite;
+            Invoke("ObtainedBoq", 1.0f);
         }
     }
 
     private void UpdateDialogue()
     {
-        if (gateInteract.GetDadDialogue1 && pos == 0)           // first interaction with dad
+        if (!frog && pos == 0)           // first interaction with dad
         {
-            mailboxDialogue1 = true;
             pos = 1;
         }
-        else if (mailboxInteract.GetDadDialogue3 && pos == 1)   // dad tell you to get mail
-        {
-            pos = 2;
-        }
-        else if(pos == 2)                                       // dad gave u the keys
-        {
-            pos = 3;
-        }
     }
 
-    private void ObtainedKey()
+    private void ObtainedBoq()
     {
-        keyPanel.gameObject.SetActive(true);
-        Invoke("UnobtainedKey", 2.0f);
+        boqPanel.gameObject.SetActive(true);
+        Invoke("UnobtainedBoq", 2.0f);
     }
 
-    private void UnobtainedKey()
+    private void UnobtainedBoq()
     {
-        keyAnimator.SetBool("ObtainedLetter", true);
+        boqAnimator.SetBool("ObtainedBoq", true);
     }
 }

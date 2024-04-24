@@ -1,8 +1,8 @@
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class FlowerInteract : MonoBehaviour
 {
+    [SerializeField] private Animator flower1Animator;
     [SerializeField] private Animator cinematicAnimator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite sprite;
@@ -10,6 +10,7 @@ public class FlowerInteract : MonoBehaviour
     [Header("Game Objects")]
     [SerializeField] private GameObject speechBubble;
     [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private GameObject flower1Panel;
 
     private bool interacted = false;
     private bool inRange = false;
@@ -71,7 +72,20 @@ public class FlowerInteract : MonoBehaviour
         Debug.Log("end");
         Invoke("SpeechBubbleEnable", 1.0f);
         cinematicAnimator.SetBool("Cinematic", false);      // black bars disable
-        Invoke("DestroyFlower", 1.0f);
+        Invoke("ObtainFlower", 1.0f);
+    }
+
+    private void ObtainFlower()
+    {
+        flower1Panel.gameObject.SetActive(true);
+        Invoke("UnobtainedFlower", 2.0f);
+    }
+
+    private void UnobtainedFlower()
+    {
+        flower1Animator.SetBool("ObtainedFlower1", true);
+        DestroyFlower();
+
     }
 
     private void DestroyFlower()
