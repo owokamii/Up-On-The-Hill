@@ -1,7 +1,7 @@
-using UnityEngine;
-using TMPro;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
 public class DialogueSystem : MonoBehaviour
 {
