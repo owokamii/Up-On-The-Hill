@@ -7,12 +7,12 @@ public class Mailbox : NPC, ITalkable
     [SerializeField] private DialogueText[] dialogueText;
     [SerializeField] private DialogueController dialogueController;
 
-    [SerializeField] private bool interactedGateLocked = false;
-    [SerializeField] private bool interactedDad = false;
-    [SerializeField] private bool obtainedMail = false;
-    [SerializeField] private bool interactedMailboxEventEnded = false;
+    private bool interactedGateLocked = false;
+    private bool interactedDad = false;
+    private bool obtainedMail = false;
+    private bool interactedMailboxEventEnded = false;
 
-    [SerializeField] private int pos = 0;
+    private int pos = 0;
 
     public override void Interact()
     {
@@ -26,7 +26,7 @@ public class Mailbox : NPC, ITalkable
         dialogueController.DisplayNextParagraph(dialogueText);
     }
 
-    public void EventGateLocked() // done
+    public void EventGateLocked()   // done
     {
         interactedGateLocked = dad.GetInteractedGate;
         interactedDad = dad.GetInteractedDad;
@@ -40,7 +40,7 @@ public class Mailbox : NPC, ITalkable
         }
     }
 
-    public void EventObtainedMail()
+    public void EventObtainedMail() // done
     {
         if (!interactedMailboxEventEnded && obtainedMail)
         {

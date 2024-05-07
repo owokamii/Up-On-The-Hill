@@ -12,18 +12,24 @@ public class CameraZoom : MonoBehaviour
     [SerializeField] private float cameraZoomOut;
     [SerializeField] private float transitionDuration;
 
+    private Coroutine zoomCoroutine;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (zoomCoroutine != null)
+            StopCoroutine(zoomCoroutine);
+
         playerCamera.Follow = indoorCamera;
-        StartCoroutine(ZoomCoroutine(playerCamera.m_Lens.OrthographicSize, cameraZoomOut));
-        //playerCamera.m_Lens.OrthographicSize = cameraZoomOut;
+        zoomCoroutine = StartCoroutine(ZoomCoroutine(playerCamera.m_Lens.OrthographicSize, cameraZoomOut));
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (zoomCoroutine != null)
+            StopCoroutine(zoomCoroutine);
+
         playerCamera.Follow = player;
-        StartCoroutine(ZoomCoroutine(playerCamera.m_Lens.OrthographicSize, cameraZoomIn));
-        //playerCamera.m_Lens.OrthographicSize = cameraZoomIn;
+        zoomCoroutine = StartCoroutine(ZoomCoroutine(playerCamera.m_Lens.OrthographicSize, cameraZoomIn));
     }
 
     private IEnumerator ZoomCoroutine(float startSize, float targetSize)
@@ -32,7 +38,7 @@ public class CameraZoom : MonoBehaviour
 
         while (elapsedTime < transitionDuration)
         {
-            float t = Mathf.SmoothStep(0f, 1f, elapsedTime / transitionDuration);
+            float t = elapsedTime / transitionDuration;
             float newSize = Mathf.Lerp(startSize, targetSize, t);
             playerCamera.m_Lens.OrthographicSize = newSize;
             elapsedTime += Time.deltaTime;

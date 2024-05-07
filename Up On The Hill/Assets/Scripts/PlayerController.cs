@@ -2,25 +2,44 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("References")]
+    [Header("Script")]
+    [SerializeField] private MonoBehaviour NPC;
+
+    [Header("Game Components")]
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Animator animator;
+
+    [Header("Game Objects")]
+    [SerializeField] private GameObject[] flowers;
 
     [Header("Parameters")]
     [SerializeField] private float movementSpeed;
 
     private float xAxis;
+    public bool canMove;
     private bool isFacingRight = true;
+
+    public bool GetCanMove { get => canMove; set => canMove = value; }
 
     private void Awake()
     {
+        canMove = true;
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
+    private void OnDisable()
+    {
+        animator.SetFloat("xAxis", Mathf.Abs(0));
+        rigidBody.velocity = Vector2.zero;
+    }
+
     private void Update()
     {
-        HandleMovement();
+        if (canMove)
+        {
+            HandleMovement();
+        }
     }
 
     private void HandleMovement()

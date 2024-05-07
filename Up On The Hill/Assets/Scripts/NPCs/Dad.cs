@@ -8,20 +8,21 @@ public class Dad : NPC, ITalkable
     [SerializeField] private bool interactedGateLocked = false;
     [SerializeField] private bool gateLockedEventEnded = false;
 
-    [SerializeField] private bool interactedDad = false;
-    [SerializeField] private bool dadEventEnded = false;
+    private bool interactedDad;
+    private bool dadEventEnded;
 
-    [SerializeField] private bool obtainedMail = false;
-    [SerializeField] private bool mailEventEnded = false;
+    private bool obtainedMail;
+    private bool mailEventEnded;
 
-    [SerializeField] private bool obtainedKey = false;
-    [SerializeField] private bool keyEventEnded = false;
+    private bool obtainedKey;
+    private bool keyEventEnded;
 
-    [SerializeField] private int pos = 0;
+    private int pos = 0;
 
     public bool GetInteractedGate { get => interactedGateLocked; set => interactedGateLocked = value; }
     public bool GetInteractedDad { get => interactedDad; }
     public bool GetObtainedMail { set => obtainedMail = value; }
+    public bool GetObtainedKey { get => obtainedKey; }
 
     public override void Interact()
     {
@@ -37,7 +38,7 @@ public class Dad : NPC, ITalkable
         dialogueController.DisplayNextParagraph(dialogueText);
     }
 
-    public void EventGateLocked() // done
+    public void EventGateLocked()   // done
     {
         if (interactedGateLocked && !gateLockedEventEnded)
         {
@@ -46,7 +47,7 @@ public class Dad : NPC, ITalkable
         }
     }
 
-    public void EventInteractDad() // done
+    public void EventInteractDad()  // done
     {
         if(interactedGateLocked && !interactedDad && !dadEventEnded)
         {
@@ -55,7 +56,7 @@ public class Dad : NPC, ITalkable
         }
     }
 
-    public void EventObtainedMail()
+    public void EventObtainedMail() // done
     {
         if (obtainedMail && !mailEventEnded)
         {
@@ -65,7 +66,7 @@ public class Dad : NPC, ITalkable
         }
     }
 
-    public void EventObtainedKey()
+    public void EventObtainedKey()  // done
     {
         if(obtainedKey && !keyEventEnded && mailEventEnded)
         {

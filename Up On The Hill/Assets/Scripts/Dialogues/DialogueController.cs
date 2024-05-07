@@ -15,6 +15,7 @@ public class DialogueController : MonoBehaviour
     private Queue<string> paragraphs = new Queue<string>();
 
     private bool conversationEnded;
+    private bool conversationStarted;
     private bool isTyping;
 
     private string p;
@@ -23,6 +24,8 @@ public class DialogueController : MonoBehaviour
 
     private const string HTMP_ALPHA = "<color=#00000000>";
     private const float MAX_TYPE_TIME = 0.1f;
+
+    public bool GetConversationEnded { get => conversationEnded; }
 
     public void DisplayNextParagraph(DialogueText dialogueText)
     {
@@ -50,7 +53,7 @@ public class DialogueController : MonoBehaviour
             FinishParagraphEarly();
         }
 
-        if(paragraphs.Count == 0)
+        if (paragraphs.Count == 0)
         {
             conversationEnded = true;
         }
@@ -87,6 +90,7 @@ public class DialogueController : MonoBehaviour
     private IEnumerator TypeDialogueText(string p)
     {
         isTyping = true;
+        icon.enabled = false;
 
         NPCDialogueText.text = "";
 
@@ -94,15 +98,24 @@ public class DialogueController : MonoBehaviour
         string displayedText = "";
         int alphaIndex = 0;
 
+        if(conversationStarted)
+        {
+            yield return new WaitForSeconds(2.0f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
         foreach (char c in p.ToCharArray())
         {
             alphaIndex++;
             NPCDialogueText.text = originalText;
 
+            UpdateIconPosition();
+
             displayedText = NPCDialogueText.text.Insert(alphaIndex, HTMP_ALPHA);
             NPCDialogueText.text = displayedText;
-
-            UpdateIconPosition();
 
             yield return new WaitForSeconds(MAX_TYPE_TIME / typeSpeed);
         }
@@ -112,6 +125,8 @@ public class DialogueController : MonoBehaviour
 
     private void UpdateIconPosition()
     {
+        icon.enabled = true;
+
         if (icon != null)
         {
             RectTransform textRT = NPCDialogueText.rectTransform;
@@ -130,23 +145,34 @@ public class DialogueController : MonoBehaviour
 
     private void FinishParagraphEarly()
     {
-        StopCoroutine(typeDialogueCoroutine);
+        if(!conversationStarted)
+        {
+            StopCoroutine(typeDialogueCoroutine);
 
-        NPCDialogueText.text = p;
+            NPCDialogueText.text = p;
+            UpdateIconPosition();
 
-        isTyping = false;
+            isTyping = false;
+        }
     }
 
     private void StartCinematic()
     {
+        conversationStarted = true;
         playerController.enabled = false;
         cinematicAnimator.SetBool("Cinematic", true);
+        Invoke("CinematicPlaying", 2.0f);
+    }
+
+    private void CinematicPlaying()
+    {
+        conversationStarted = false;
     }
 
     private void EndCinematic()
     {
         cinematicAnimator.SetBool("Cinematic", false);
-        Invoke("EnablePlayerController", 2);
+        Invoke("EnablePlayerController", 2.0f);
     }
 
     private void EnablePlayerController()

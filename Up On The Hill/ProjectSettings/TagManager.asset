@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Dad
+  - Mailbox
+  - Gate
+  - Flower1
+  - Flower2
+  - Flower3
+  - Flower4
+  - Flower5
+  - RacoonTrigger
+  - Flower
   layers:
   - Default
   - TransparentFX
