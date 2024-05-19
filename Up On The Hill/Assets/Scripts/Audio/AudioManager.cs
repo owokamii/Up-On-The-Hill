@@ -79,6 +79,17 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
+    public void StopSFX(string name)
+    {
+        Sound s = Array.Find(sfx, sound => sound.name == name);
+        if(s == null)
+        {
+            Debug.LogWarning("SFX: " + name + " not found!");
+            return;
+        }
+        s.source.Stop();
+    }
+
     //plug this into where you want the audio to play
     //FindObjectOfType<AudioManager>().PlayMusic("BGM");
     //FindObjectOfType<AudioManager>().PlaySFX("SFX");
