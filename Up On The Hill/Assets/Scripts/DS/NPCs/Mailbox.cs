@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class M : MonoBehaviour
+public class Mailbox : MonoBehaviour
 {
     [Header("Game Scripts")]
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private D dad;
+    [SerializeField] private Dad dad;
 
     [Header("Game Components")]
     [SerializeField] private SpriteRenderer speechBubble;

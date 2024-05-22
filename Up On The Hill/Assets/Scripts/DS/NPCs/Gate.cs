@@ -1,17 +1,18 @@
-using Cinemachine;
-using System.Collections;
 using UnityEngine;
 
-public class D2 : MonoBehaviour
+public class Gate : MonoBehaviour
 {
     [Header("Game Scripts")]
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private GraveInteract grave;
+    [SerializeField] private Dad dad;
 
     [Header("Game Components")]
     [SerializeField] private SpriteRenderer speechBubble;
     [SerializeField] private Animator cinematicAnimator;
-    [SerializeField] private Animator dadAnimator;
+    [SerializeField] private CapsuleCollider2D gateTrigger;
+    [SerializeField] private BoxCollider2D gateCollider;
+    [SerializeField] private SpriteRenderer gateSP;
+    [SerializeField] private Sprite gateS;
 
     [Header("Game Objects")]
     [SerializeField] private GameObject[] dialogueBox;
@@ -19,29 +20,17 @@ public class D2 : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] private float invokeSpeechBubble = 1.5f;
 
-    [SerializeField] private CinemachineVirtualCamera playerCamera;
-    [SerializeField] private Transform indoorCamera;
-
-    [SerializeField] private float cameraZoomOut;
-    [SerializeField] private float transitionDuration;
-
-    private int pos = 0;
+    private int pos;
     private bool inRange;
-    private bool bgmStarted;
     private bool interacted;
     private bool interactionCD;
 
     // triggers
-    private bool interactedDad2;
-    private bool interactedGrave;
+    private bool interactedGate_1;
+    private bool obtainedKey;
 
     // get set
-    public bool GetInteractedDad2 { get => interactedDad2; }
-
-    private void Awake()
-    {
-        dadAnimator = GetComponent<Animator>();
-    }
+    public bool GetInteractedGate_1 { get => interactedGate_1; }
 
     private void Update()
     {
@@ -50,6 +39,7 @@ public class D2 : MonoBehaviour
             if (!dialogueBox[pos].activeSelf && interacted)
             {
                 EndDialogue();
+                UpdateDialogueAfter();
             }
             else if (!interacted && !interactionCD && Input.GetButtonDown("Interact"))
             {
@@ -61,20 +51,13 @@ public class D2 : MonoBehaviour
 
     private void StartDialogue()
     {
-        if(!bgmStarted)
-        {
-            FindObjectOfType<AudioManager>().PlaySFX("Piano");
-            bgmStarted = true;
-        }
-
-        CinematicZoom();
+        FindObjectOfType<AudioManager>().PlaySFX("GateLocked");
 
         interactionCD = true;
 
         interacted = true;
         DisableSpeechBubble();
         cinematicAnimator.SetBool("Cinematic", true);
-        dadAnimator.SetBool("Interacted", true);
         dialogueBox[pos].SetActive(true);
     }
 
@@ -82,27 +65,41 @@ public class D2 : MonoBehaviour
     {
         Invoke("InteractionCD", 2.0f);
 
-        interacted = false;
-        dadAnimator.SetBool("Interacted", false);
-        //cinematicAnimator.SetBool("Cinematic", false);
+        interacted = false;   
+        cinematicAnimator.SetBool("Cinematic", false);
         Invoke("EnableSpeechBubble", invokeSpeechBubble);
     }
 
     private void UpdateDialogueBefore()
     {
-        if (!interactedDad2)
+        // event 5 - interact with gate with key
+        if (!obtainedKey && interactedGate_1)
         {
-            interactedDad2 = true;
-        }
+            obtainedKey = dad.GetObtainedKey;
 
-        if(!interactedGrave)
-        {
-            interactedGrave = grave.GetInteractedGrave;
-
-            if(interactedGrave)
+            if (obtainedKey)
             {
                 pos++;
             }
+        }
+
+        // event 1 - interact with gate locked
+        if (!interactedGate_1)
+        {
+            interactedGate_1 = true;
+        }
+    }
+
+    private void UpdateDialogueAfter()
+    {
+        // event 5.1 - unlock gate
+        if (obtainedKey)
+        {
+            FindObjectOfType<AudioManager>().PlaySFX("GateUnlocked");
+            obtainedKey = false;
+            gateTrigger.enabled = false;
+            gateCollider.enabled = false;
+            gateSP.sprite = gateS;
         }
     }
 
@@ -114,7 +111,10 @@ public class D2 : MonoBehaviour
     private void EnableSpeechBubble()
     {
         playerController.enabled = true;
-        speechBubble.enabled = true;
+        if (gateTrigger.isActiveAndEnabled)
+        {
+            speechBubble.enabled = true;
+        }
     }
 
     private void DisableSpeechBubble()
@@ -134,27 +134,4 @@ public class D2 : MonoBehaviour
         inRange = false;
         speechBubble.enabled = false;
     }
-
-    private void CinematicZoom()
-    {
-        playerCamera.Follow = indoorCamera;
-        StartCoroutine(ZoomCoroutine(playerCamera.m_Lens.OrthographicSize, cameraZoomOut));
-    }
-
-    private IEnumerator ZoomCoroutine(float startSize, float targetSize)
-    {
-        float elapsedTime = 0f;
-
-        while (elapsedTime < transitionDuration)
-        {
-            float t = Mathf.SmoothStep(0f, 1f, elapsedTime / transitionDuration);
-            float newSize = Mathf.Lerp(startSize, targetSize, t);
-            playerCamera.m_Lens.OrthographicSize = newSize;
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        playerCamera.m_Lens.OrthographicSize = targetSize;
-    }
-
 }

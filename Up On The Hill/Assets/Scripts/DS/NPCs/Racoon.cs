@@ -1,11 +1,10 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class R : MonoBehaviour
+public class Racoon : MonoBehaviour
 {
     [Header("Game Scripts")]
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private F frog;
+    [SerializeField] private Frog frog;
 
     [Header("Game Components")]
     [SerializeField] private SpriteRenderer speechBubble;

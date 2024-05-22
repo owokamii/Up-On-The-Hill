@@ -1,18 +1,15 @@
 using UnityEngine;
 
-public class G : MonoBehaviour
+public class Grave : MonoBehaviour
 {
     [Header("Game Scripts")]
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private D dad;
+    [SerializeField] private Dad2 dad2;
 
     [Header("Game Components")]
     [SerializeField] private SpriteRenderer speechBubble;
-    [SerializeField] private Animator cinematicAnimator;
-    [SerializeField] private CapsuleCollider2D gateTrigger;
-    [SerializeField] private BoxCollider2D gateCollider;
-    [SerializeField] private SpriteRenderer gateSP;
-    [SerializeField] private Sprite gateS;
+    [SerializeField] private CapsuleCollider2D graveTrigger;
+    [SerializeField] private SpriteRenderer boqSP;
 
     [Header("Game Objects")]
     [SerializeField] private GameObject[] dialogueBox;
@@ -20,17 +17,17 @@ public class G : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] private float invokeSpeechBubble = 1.5f;
 
-    private int pos;
+    private int pos = 0;
     private bool inRange;
     private bool interacted;
     private bool interactionCD;
 
     // triggers
-    private bool interactedGate_1;
-    private bool obtainedKey;
+    private bool interactedDad2;
+    private bool interactedGrave;
 
     // get set
-    public bool GetInteractedGate_1 { get => interactedGate_1; }
+    public bool GetInteractedGrave { get => interactedGrave; }
 
     private void Update()
     {
@@ -51,13 +48,10 @@ public class G : MonoBehaviour
 
     private void StartDialogue()
     {
-        FindObjectOfType<AudioManager>().PlaySFX("GateLocked");
-
         interactionCD = true;
 
         interacted = true;
         DisableSpeechBubble();
-        cinematicAnimator.SetBool("Cinematic", true);
         dialogueBox[pos].SetActive(true);
     }
 
@@ -65,41 +59,31 @@ public class G : MonoBehaviour
     {
         Invoke("InteractionCD", 2.0f);
 
-        interacted = false;   
-        cinematicAnimator.SetBool("Cinematic", false);
+        interacted = false;
         Invoke("EnableSpeechBubble", invokeSpeechBubble);
     }
 
     private void UpdateDialogueBefore()
     {
-        // event 5 - interact with gate with key
-        if (!obtainedKey && interactedGate_1)
+        if (!interactedDad2)
         {
-            obtainedKey = dad.GetObtainedKey;
+            interactedDad2 = dad2.GetInteractedDad2;
 
-            if (obtainedKey)
+            if (interactedDad2)
             {
+
                 pos++;
             }
-        }
-
-        // event 1 - interact with gate locked
-        if (!interactedGate_1)
-        {
-            interactedGate_1 = true;
         }
     }
 
     private void UpdateDialogueAfter()
     {
-        // event 5.1 - unlock gate
-        if (obtainedKey)
+        if (interactedDad2)
         {
-            FindObjectOfType<AudioManager>().PlaySFX("GateUnlocked");
-            obtainedKey = false;
-            gateTrigger.enabled = false;
-            gateCollider.enabled = false;
-            gateSP.sprite = gateS;
+            graveTrigger.enabled = false;
+            interactedGrave = true;
+            boqSP.enabled = true;
         }
     }
 
@@ -111,7 +95,10 @@ public class G : MonoBehaviour
     private void EnableSpeechBubble()
     {
         playerController.enabled = true;
-        //speechBubble.enabled = true;
+        if(graveTrigger.isActiveAndEnabled)
+        {
+            speechBubble.enabled = true;
+        }
     }
 
     private void DisableSpeechBubble()

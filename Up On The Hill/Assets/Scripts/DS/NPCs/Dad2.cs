@@ -1,18 +1,24 @@
+using Cinemachine;
 using UnityEngine;
 
-public class GraveInteract : MonoBehaviour
+public class Dad2 : MonoBehaviour
 {
     [Header("Game Scripts")]
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private D2 dad2;
+    [SerializeField] private Grave grave;
 
     [Header("Game Components")]
     [SerializeField] private SpriteRenderer speechBubble;
-    [SerializeField] private SpriteRenderer sp;
+    [SerializeField] private Animator dadAnimator;
+
+    [Header("Game Objects")]
+    [SerializeField] private GameObject[] dialogueBox;
+
+    [Header("Parameters")]
+    [SerializeField] private float invokeSpeechBubble = 1.5f;
 
     private int pos = 0;
     private bool inRange;
-    private bool bgmStarted;
     private bool interacted;
     private bool interactionCD;
 
@@ -21,40 +27,28 @@ public class GraveInteract : MonoBehaviour
     private bool interactedGrave;
 
     // get set
-    public bool GetInteractedGrave { get => interactedGrave; }
+    public bool GetInteractedDad2 { get => interactedDad2; }
+
+    private void Awake()
+    {
+        dadAnimator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
         if (inRange)
         {
-            /*if (!dialogueBox[pos].activeSelf && interacted)
+            if (!dialogueBox[pos].activeSelf && interacted)
             {
                 EndDialogue();
             }
             else if (!interacted && !interactionCD && Input.GetButtonDown("Interact"))
             {
-                //UpdateDialogueBefore();
+                UpdateDialogueBefore();
                 StartDialogue();
-            }*/
-        }
-    }
-
-    /*private void Update()
-    {
-        if (Input.GetButtonDown("Interact"))
-        {
-            if(!interactedDad2)
-            {
-                interactedDad2 = dad2.GetInteractedDad2;
-
-                if(interactedDad2)
-                {
-                    sp.enabled = true;
-                    interactedGrave = true;
-                }
             }
         }
-    }*/
+    }
 
     private void StartDialogue()
     {
@@ -62,9 +56,8 @@ public class GraveInteract : MonoBehaviour
 
         interacted = true;
         DisableSpeechBubble();
-        //cinematicAnimator.SetBool("Cinematic", true);
-        //dadAnimator.SetBool("Interacted", true);
-        //dialogueBox[pos].SetActive(true);
+        dadAnimator.SetBool("Interacted", true);
+        dialogueBox[pos].SetActive(true);
     }
 
     private void EndDialogue()
@@ -72,9 +65,26 @@ public class GraveInteract : MonoBehaviour
         Invoke("InteractionCD", 2.0f);
 
         interacted = false;
-        //dadAnimator.SetBool("Interacted", false);
-        //cinematicAnimator.SetBool("Cinematic", false);
-        //Invoke("EnableSpeechBubble", invokeSpeechBubble);
+        dadAnimator.SetBool("Interacted", false);
+        Invoke("EnableSpeechBubble", invokeSpeechBubble);
+    }
+
+    private void UpdateDialogueBefore()
+    {
+        if (!interactedDad2)
+        {
+            interactedDad2 = true;
+        }
+
+        if(!interactedGrave)
+        {
+            interactedGrave = grave.GetInteractedGrave;
+
+            if(interactedGrave)
+            {
+                pos++;
+            }
+        }
     }
 
     private void InteractionCD()

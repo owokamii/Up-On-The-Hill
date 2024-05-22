@@ -1,44 +1,47 @@
 using UnityEngine;
 
-public class D : MonoBehaviour
+public class Frog : MonoBehaviour
 {
     [Header("Game Scripts")]
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private G gate;
-    [SerializeField] private M mailbox;
+    [SerializeField] private F_Movement fMovement;
+    [SerializeField] private Racoon racoon;
 
     [Header("Game Components")]
     [SerializeField] private SpriteRenderer speechBubble;
     [SerializeField] private Animator cinematicAnimator;
-    [SerializeField] private Animator dadAnimator;
+    [SerializeField] private Animator frogAnimator;
+    [SerializeField] private CapsuleCollider2D frogTrigger;
+    [SerializeField] private SpriteRenderer frogSP;
+    [SerializeField] private AudioSource frogAudioSource;
 
     [Header("Game Objects")]
     [SerializeField] private GameObject[] dialogueBox;
-    [SerializeField] private GameObject keyPanel;
+    [SerializeField] private GameObject frogPanel;
 
     [Header("Parameters")]
     [SerializeField] private float invokeSpeechBubble = 1.5f;
 
-    private int pos = 0;
+    private int pos;
     private bool inRange;
     private bool isActive;
     private bool interacted;
     private bool interactionCD;
 
     // triggers
-    private bool interactedGate_1;
-    private bool interactedDad_2;
-    private bool obtainedMail;
-    private bool obtainedKey;
-    private bool dadConversation4;
+    private bool interactRacoon_1;
+    private bool obtainedFrog;
 
-    // get set
-    public bool GetInteractedDad_2 { get => interactedDad_2; }
-    public bool GetObtainedKey { get => obtainedKey; }
+    public bool GetObtainedFrog { get => obtainedFrog; }
+
+    private void Awake()
+    {
+        frogAudioSource = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
-        if(inRange)
+        if (inRange)
         {
             if (!dialogueBox[pos].activeSelf && interacted)
             {
@@ -47,10 +50,13 @@ public class D : MonoBehaviour
                     ObtainedItem();
                 }
 
-                if (!keyPanel.activeSelf)
+                if(!frogPanel.activeSelf)
                 {
                     EndDialogue();
-                    UpdateDialogueAfter();
+                    if (isActive)
+                    {
+                        DisableFrog();
+                    }
                 }
             }
             else if (!interacted && !interactionCD && Input.GetButtonDown("Interact"))
@@ -61,6 +67,13 @@ public class D : MonoBehaviour
         }
     }
 
+    private void DisableFrog()
+    {
+        frogAnimator.enabled = false;
+        frogTrigger.enabled = false;
+        frogSP.sprite = null;
+    }
+
     private void StartDialogue()
     {
         interactionCD = true;
@@ -68,7 +81,6 @@ public class D : MonoBehaviour
         interacted = true;
         DisableSpeechBubble();
         cinematicAnimator.SetBool("Cinematic", true);
-        dadAnimator.SetBool("Interacted", true);
         dialogueBox[pos].SetActive(true);
     }
 
@@ -77,56 +89,34 @@ public class D : MonoBehaviour
         Invoke("InteractionCD", 2.0f);
 
         interacted = false;
-        dadAnimator.SetBool("Interacted", false);
         cinematicAnimator.SetBool("Cinematic", false);
         Invoke("EnableSpeechBubble", invokeSpeechBubble);
     }
 
     private void ObtainedItem()
     {
-        if(obtainedMail)
+        if (interactRacoon_1)
         {
-            FindObjectOfType<AudioManager>().PlaySFX("ObtainedKey");
-            keyPanel.SetActive(true);
+            frogPanel.SetActive(true);
             isActive = true;
+            interactRacoon_1 = false;
+            frogAudioSource.Stop();
+            FindObjectOfType<AudioManager>().PlaySFX("ObtainedFrog");
         }
     }
 
     private void UpdateDialogueBefore()
     {
-        // event 4 - obtained key
-        if (!obtainedMail)
+        // event 6 - interact with racoon
+        if (!interactRacoon_1)
         {
-            obtainedMail = mailbox.GetObtainedMail;
+            interactRacoon_1 = racoon.GetInteractRacoon_1;
 
-            if (obtainedMail)
+            if(interactRacoon_1)
             {
-                obtainedKey = true;
-                dadConversation4 = true;
                 pos++;
+                obtainedFrog = true;
             }
-        }
-
-        // event 2 - interact with dad
-        if (!interactedGate_1)
-        {
-            interactedGate_1 = gate.GetInteractedGate_1;
-
-            if (interactedGate_1)
-            {
-                interactedDad_2 = true;
-                pos++;
-            }
-        }
-    }
-
-    private void UpdateDialogueAfter()
-    {
-        // event 4.1 - after obtained key
-        if (dadConversation4)
-        {
-            dadConversation4 = false;
-            pos++;
         }
     }
 
@@ -137,12 +127,17 @@ public class D : MonoBehaviour
 
     private void EnableSpeechBubble()
     {
+        fMovement.enabled = true;
         playerController.enabled = true;
-        speechBubble.enabled = true;
+        if(!isActive)
+        {
+            speechBubble.enabled = true;
+        }
     }
 
     private void DisableSpeechBubble()
     {
+        fMovement.enabled = false;
         playerController.enabled = false;
         speechBubble.enabled = false;
     }
