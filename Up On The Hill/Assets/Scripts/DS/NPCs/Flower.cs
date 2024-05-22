@@ -23,6 +23,7 @@ public class Flower : MonoBehaviour
     private bool isActive;
     private bool interacted;
     private bool interactionCD;
+    private bool sfxPlayed;
 
     public bool GetIsActive { get => isActive; }
 
@@ -80,25 +81,35 @@ public class Flower : MonoBehaviour
 
     private void ObtainedItem()
     {
-        switch (pos)
+        if (!sfxPlayed)
         {
-            case 1:
-                FindObjectOfType<AudioManager>().PlaySFX("1");
-                break;
-            case 2:
-                FindObjectOfType<AudioManager>().PlaySFX("2");
-                break;
-            case 3:
-                FindObjectOfType<AudioManager>().PlaySFX("3");
-                break;
-            case 4:
-                FindObjectOfType<AudioManager>().PlaySFX("4");
-                break;
-            case 5:
-                FindObjectOfType<AudioManager>().PlaySFX("5");
-                break;
-            default:
-                break;
+            switch (pos)
+            {
+                case 1:
+                    FindObjectOfType<AudioManager>().PlaySFX("1");
+                    Debug.Log("test");
+                    break;
+                case 2:
+                    FindObjectOfType<AudioManager>().PlaySFX("2");
+                    Debug.Log("test");
+                    break;
+                case 3:
+                    FindObjectOfType<AudioManager>().PlaySFX("3");
+                    Debug.Log("test");
+                    break;
+                case 4:
+                    FindObjectOfType<AudioManager>().PlaySFX("4");
+                    Debug.Log("test");
+                    break;
+                case 5:
+                    FindObjectOfType<AudioManager>().PlaySFX("5");
+                    Debug.Log("test");
+                    break;
+                default:
+                    break;
+            }
+
+            sfxPlayed = true;
         }
 
         flowerPanel.SetActive(true);

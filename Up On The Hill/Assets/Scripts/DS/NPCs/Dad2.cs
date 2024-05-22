@@ -5,11 +5,13 @@ public class Dad2 : MonoBehaviour
 {
     [Header("Game Scripts")]
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private LevelLoader levelLoader;
     [SerializeField] private Grave grave;
 
     [Header("Game Components")]
     [SerializeField] private SpriteRenderer speechBubble;
     [SerializeField] private Animator dadAnimator;
+    [SerializeField] private CapsuleCollider2D dad2Trigger;
 
     [Header("Game Objects")]
     [SerializeField] private GameObject[] dialogueBox;
@@ -41,6 +43,7 @@ public class Dad2 : MonoBehaviour
             if (!dialogueBox[pos].activeSelf && interacted)
             {
                 EndDialogue();
+                UpdateDialogueAfter();
             }
             else if (!interacted && !interactionCD && Input.GetButtonDown("Interact"))
             {
@@ -87,6 +90,15 @@ public class Dad2 : MonoBehaviour
         }
     }
 
+    private void UpdateDialogueAfter()
+    {
+        if(interactedGrave)
+        {
+            dad2Trigger.enabled = false;
+            levelLoader.FadeToNextLevel();
+        }
+    }
+
     private void InteractionCD()
     {
         interactionCD = false;
@@ -95,7 +107,11 @@ public class Dad2 : MonoBehaviour
     private void EnableSpeechBubble()
     {
         playerController.enabled = true;
-        speechBubble.enabled = true;
+
+        if (dad2Trigger.isActiveAndEnabled)
+        {
+            speechBubble.enabled = true;
+        }
     }
 
     private void DisableSpeechBubble()

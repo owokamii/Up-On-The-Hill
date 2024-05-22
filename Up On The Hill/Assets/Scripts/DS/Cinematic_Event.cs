@@ -30,13 +30,14 @@ public class Cinematic_Event : MonoBehaviour
 
         while (elapsedTime < transitionDuration)
         {
-            float t = Mathf.SmoothStep(0f, 1f, elapsedTime / transitionDuration);
+            float t = elapsedTime / transitionDuration;
             float newSize = Mathf.Lerp(startSize, targetSize, t);
             playerCamera.m_Lens.OrthographicSize = newSize;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
+        playerCamera.m_Lens.OrthographicSize = targetSize;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

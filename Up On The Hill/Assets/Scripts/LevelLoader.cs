@@ -6,7 +6,22 @@ public class LevelLoader : MonoBehaviour
     [Header("Game Components")]
     [SerializeField] private Animator animator;
 
-    public int levelToLoad;
+    [Header("Parameters")]
+    [SerializeField] private bool keyPress;
+
+    private int levelToLoad;
+
+    private void Update()
+    {
+        if(Input.GetButtonDown("Interact"))
+        {
+            if(keyPress)
+            {
+                FindObjectOfType<AudioManager>().PlaySFX("5");
+                FadeToNextLevel();
+            }
+        }
+    }
 
     public void FadeToNextLevel()
     {

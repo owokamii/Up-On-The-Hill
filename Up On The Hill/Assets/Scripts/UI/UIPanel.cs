@@ -3,9 +3,14 @@ using UnityEngine;
 
 public class UIFade : MonoBehaviour
 {
+    [Header("Game Components")]
     [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private PlayerController playerController;
+
+    [Header("Parameters")]
     [SerializeField] private float targetAlpha;
     [SerializeField] private float transitionDuration;
+    [SerializeField] private bool startCantMove;
 
     private Coroutine fadeCoroutine;
     private bool disableSelf;
@@ -13,6 +18,11 @@ public class UIFade : MonoBehaviour
 
     private void Start()
     {
+        if(startCantMove)
+        {
+            playerController.enabled = false;
+        }
+
         FadeTo(targetAlpha);
     }
 
@@ -61,6 +71,7 @@ public class UIFade : MonoBehaviour
 
         if (disableSelf)
         {
+            playerController.enabled = true;
             gameObject.SetActive(false);
         }
     }

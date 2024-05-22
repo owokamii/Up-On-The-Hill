@@ -54,14 +54,12 @@ public class B : MonoBehaviour
         initiated = false;
         interacted = true;
         DisableSpeechBubble();
-        cinematicAnimator.SetBool("Cinematic", true);
         dialogueBox.SetActive(true);
     }
 
     private void EndDialogue()
     {
         interacted = false;
-        cinematicAnimator.SetBool("Cinematic", false);
         Invoke("EnableSpeechBubble", invokeSpeechBubble);
     }
 
