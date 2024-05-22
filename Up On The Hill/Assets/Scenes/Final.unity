@@ -1200,8 +1200,8 @@ MonoBehaviour:
   NPCDialogue: {fileID: 1083272611}
   NPCIcon: {fileID: 1766105727}
   lines:
-  - This is mom's grave and today is her birthday.
-  - Happy Birthday Mom!
+  - Today is mom's birthday.
+  - Happy birthday mom!
   textSpeed: 0.05
   invokeTime: 2
   disableAuto: 1
@@ -4214,7 +4214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 176763470}
-  playerController: {fileID: 0}
+  playerController: {fileID: 1896286054}
   targetAlpha: 1
   transitionDuration: 1
   startCantMove: 0
@@ -7213,7 +7213,7 @@ MonoBehaviour:
   lines:
   - Thanks a bunch.
   - Here's the gate key.
-  - If you're going up the hill now,
+  - If you're going up the hill now
   - could you pick up some flowers on the way?
   - I'll catch up with you once I'm done with this call.
   textSpeed: 0.05
@@ -8662,7 +8662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 441802281}
-  playerController: {fileID: 0}
+  playerController: {fileID: 1896286054}
   targetAlpha: 1
   transitionDuration: 1
   startCantMove: 0
@@ -9661,7 +9661,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.942047, y: -0.59935, z: -10}
+  m_LocalPosition: {x: -38.94332, y: -0.59935, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10409,7 +10409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 540736716}
-  playerController: {fileID: 0}
+  playerController: {fileID: 1896286054}
   targetAlpha: 1
   transitionDuration: 1
   startCantMove: 0
@@ -11353,7 +11353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 555206968}
-  playerController: {fileID: 0}
+  playerController: {fileID: 1896286054}
   targetAlpha: 1
   transitionDuration: 1
   startCantMove: 0
@@ -18811,7 +18811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 701476429}
-  playerController: {fileID: 0}
+  playerController: {fileID: 1896286054}
   targetAlpha: 1
   transitionDuration: 1
   startCantMove: 0
@@ -20466,7 +20466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 792390885}
-  playerController: {fileID: 0}
+  playerController: {fileID: 1896286054}
   targetAlpha: 1
   transitionDuration: 1
   startCantMove: 0
@@ -59591,7 +59591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 1860517434}
-  playerController: {fileID: 0}
+  playerController: {fileID: 1896286054}
   targetAlpha: 1
   transitionDuration: 1
   startCantMove: 0
@@ -61594,7 +61594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 1935821091}
-  playerController: {fileID: 0}
+  playerController: {fileID: 1896286054}
   targetAlpha: 1
   transitionDuration: 1
   startCantMove: 0
@@ -69329,7 +69329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 2091240821}
-  playerController: {fileID: 0}
+  playerController: {fileID: 1896286054}
   targetAlpha: 1
   transitionDuration: 1
   startCantMove: 0

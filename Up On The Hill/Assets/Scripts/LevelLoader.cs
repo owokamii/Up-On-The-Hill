@@ -17,8 +17,15 @@ public class LevelLoader : MonoBehaviour
         {
             if(keyPress)
             {
-                FindObjectOfType<AudioManager>().PlaySFX("5");
-                FadeToNextLevel();
+                if(SceneManager.GetActiveScene().buildIndex == 2)
+                {
+                    FadeToLevel(0);
+                }
+                else
+                {
+                    FindObjectOfType<AudioManager>().PlaySFX("5");
+                    FadeToNextLevel();
+                }
             }
         }
     }
