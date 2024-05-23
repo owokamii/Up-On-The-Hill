@@ -652,6 +652,7 @@ MonoBehaviour:
   cinematicAnimator: {fileID: 551208422}
   playerAnimator: {fileID: 1896286057}
   dialogueBox: {fileID: 1605354698}
+  enableCinematic: 0
   invokeSpeechBubble: 1.5
   lerpDistance: -1
   lerpDuration: 1
@@ -2202,6 +2203,7 @@ MonoBehaviour:
   cinematicAnimator: {fileID: 551208422}
   playerAnimator: {fileID: 1896286057}
   dialogueBox: {fileID: 1364021643}
+  enableCinematic: 1
   invokeSpeechBubble: 1.5
   lerpDistance: 1
   lerpDuration: 1
@@ -4049,7 +4051,7 @@ Transform:
   m_GameObject: {fileID: 164291965}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 88.01, y: -4.41, z: 0}
+  m_LocalPosition: {x: 87.36, y: -4.41, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5481,7 +5483,7 @@ Transform:
   m_GameObject: {fileID: 258809067}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.51, y: -3.490722, z: -10}
+  m_LocalPosition: {x: -37.21, y: -3.490722, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7211,8 +7213,8 @@ MonoBehaviour:
   NPCDialogue: {fileID: 1395022381}
   NPCIcon: {fileID: 364505891}
   lines:
-  - Thanks a bunch.
-  - Here's the gate key.
+  - Thank you so much sweetie.
+  - Here's the key for the gate.
   - If you're going up the hill now
   - could you pick up some flowers on the way?
   - I'll catch up with you once I'm done with this call.
@@ -9661,7 +9663,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.952583, y: -0.59936, z: -10}
+  m_LocalPosition: {x: -37.211002, y: -0.59915996, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13111,6 +13113,7 @@ MonoBehaviour:
   cinematicAnimator: {fileID: 551208422}
   playerAnimator: {fileID: 1896286057}
   dialogueBox: {fileID: 247108365}
+  enableCinematic: 1
   invokeSpeechBubble: 1.5
   lerpDistance: 1
   lerpDuration: 1
@@ -20355,7 +20358,8 @@ MonoBehaviour:
   NPCDialogue: {fileID: 800537145}
   NPCIcon: {fileID: 1839089504}
   lines:
-  - My flowers!
+  - Oh no, my flowers!
+  - That darn racoon!
   - I've got to get it back!
   textSpeed: 0.05
   invokeTime: 5
@@ -22480,7 +22484,7 @@ MonoBehaviour:
   NPCDialogue: {fileID: 1701981881}
   NPCIcon: {fileID: 617755771}
   lines:
-  - You placed the flower bouquet on the grave.
+  - You placed the flowers on the grave.
   textSpeed: 0.05
   invokeTime: 2
   disableAuto: 1
@@ -33900,7 +33904,7 @@ MonoBehaviour:
   racoonEvent: {fileID: 57525353}
   blockEvent1: {fileID: 652006367}
   racoon: {fileID: 1880667871}
-  invokeSpeechBubble: 1.5
+  invokeSpeechBubble: 1
 --- !u!61 &1299320922
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40309,7 +40313,7 @@ Transform:
   m_GameObject: {fileID: 1400095428}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 173.76, y: -3.98, z: 0}
+  m_LocalPosition: {x: 169.14, y: -4.54, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -40847,7 +40851,7 @@ Transform:
   m_GameObject: {fileID: 1420005452}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 132.92, y: -4.49, z: 0}
+  m_LocalPosition: {x: 126.82, y: -4.31, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -41258,7 +41262,7 @@ MonoBehaviour:
   NPCDialogue: {fileID: 367732822}
   NPCIcon: {fileID: 2103370591}
   lines:
-  - Go on, go have fun.
+  - Don't forget about the flowers!
   textSpeed: 0.05
   invokeTime: 2
   disableAuto: 1
@@ -48372,7 +48376,7 @@ Transform:
   m_GameObject: {fileID: 1569313036}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 156.08, y: -4.5, z: 0}
+  m_LocalPosition: {x: 148.96, y: -4.5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -49066,7 +49070,8 @@ MonoBehaviour:
   NPCDialogue: {fileID: 1783019305}
   NPCIcon: {fileID: 1792170521}
   lines:
-  - I can't leave just yet!
+  - I can't leave quite yet!
+  - Dad is waiting for me up on the hill!
   textSpeed: 0.05
   invokeTime: 2
   disableAuto: 1
@@ -49531,7 +49536,7 @@ MonoBehaviour:
   NPCDialogue: {fileID: 1861917968}
   NPCIcon: {fileID: 1223964066}
   lines:
-  - Mom told me before that racoons eat frogs!
+  - Mom once told me that racoons eat frogs!
   - How scary ...
   textSpeed: 0.05
   invokeTime: 2
@@ -50282,7 +50287,7 @@ Transform:
   m_GameObject: {fileID: 1659563433}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 112.06, y: -4.37, z: 0}
+  m_LocalPosition: {x: 108.56, y: -4.6, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -50618,7 +50623,7 @@ MonoBehaviour:
   NPCDialogue: {fileID: 761161877}
   NPCIcon: {fileID: 632561302}
   lines:
-  - There's mails inside.
+  - There is a mail inside.
   - I got the mail!
   textSpeed: 0.05
   invokeTime: 2
@@ -52645,7 +52650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1763708365
 Transform:
   m_ObjectHideFlags: 0
@@ -53931,8 +53936,8 @@ MonoBehaviour:
   NPCDialogue: {fileID: 528451471}
   NPCIcon: {fileID: 1902954380}
   lines:
-  - You're finally here ...
-  - Go ahead, just place the flowers there.
+  - You're finally here!
+  - Go ahead, just place the flowers on the grave.
   textSpeed: 0.05
   invokeTime: 2
   disableAuto: 1
@@ -60443,7 +60448,7 @@ Transform:
   m_GameObject: {fileID: 1896286051}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.51, y: -3.490722, z: 0}
+  m_LocalPosition: {x: -37.21, y: -3.490722, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -62331,7 +62336,7 @@ MonoBehaviour:
   NPCDialogue: {fileID: 542944052}
   NPCIcon: {fileID: 1232945579}
   lines:
-  - It seems to be locked ...
+  - The gate seems to be locked ...
   - Maybe I'll ask dad about it.
   textSpeed: 0.05
   invokeTime: 2

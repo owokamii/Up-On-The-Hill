@@ -13,6 +13,7 @@ public class B : MonoBehaviour
     [SerializeField] private GameObject dialogueBox;
 
     [Header("Parameters")]
+    [SerializeField] private bool enableCinematic;
     [SerializeField] private float invokeSpeechBubble = 1.5f;
     [SerializeField] private float lerpDistance = 5.0f;
     [SerializeField] private float lerpDuration = 1.0f;
@@ -54,12 +55,20 @@ public class B : MonoBehaviour
         initiated = false;
         interacted = true;
         DisableSpeechBubble();
+        if(enableCinematic)
+        {
+            cinematicAnimator.SetBool("Cinematic", true);
+        }
         dialogueBox.SetActive(true);
     }
 
     private void EndDialogue()
     {
         interacted = false;
+        if(enableCinematic)
+        {
+            cinematicAnimator.SetBool("Cinematic", false);
+        }
         Invoke("EnableSpeechBubble", invokeSpeechBubble);
     }
 

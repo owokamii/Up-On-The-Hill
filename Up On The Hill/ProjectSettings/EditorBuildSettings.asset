@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Ivy.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: 7239fae70aef2574dbffbebcdc6e3475
   - enabled: 1
-    path: Assets/Scenes/Final.unity
+    path: Assets/Scenes/MainScene.unity
     guid: 8efe652828b4d1542b1dd50619e9f35d
   - enabled: 1
-    path: Assets/Scenes/Yvonne.unity
+    path: Assets/Scenes/CreditScene.unity
     guid: a42978b219fe635448050dedeeedbdf3
   m_configObjects: {}
