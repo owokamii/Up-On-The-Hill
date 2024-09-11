@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Script")]
-    [SerializeField] private MonoBehaviour NPC;
-
     [Header("Game Components")]
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Animator animator;
@@ -15,15 +12,24 @@ public class PlayerController : MonoBehaviour
 
     [Header("Parameters")]
     [SerializeField] private float movementSpeed;
+    [SerializeField] private float sprintSpeedMultiplier = 1.5f;
+    [SerializeField] private float animationSpeedFactor = 0.5f;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip[] footstepAudioClip;
+    [SerializeField] private AudioClip[] leftFootstepAudioClips;
+    [SerializeField] private AudioClip[] rightFootstepAudioClips;
+
+    [Header("Materials")]
+    [SerializeField] private PhysicsMaterial2D frictionMaterial;
+    [SerializeField] private PhysicsMaterial2D smoothMaterial;
 
     private int flowerNum;
-    private int pos;
     private float xAxis;
     private bool canMove = true;
     private bool isFacingRight = true;
+
+    // Tracks which foot to play next
+    private bool isLeftFootNext = true;
 
     public int GetFlowerNum { get => flowerNum; set => flowerNum = value; }
     public bool GetCanMove { get => canMove; set => canMove = value; }
@@ -39,7 +45,6 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetFloat("xAxis", Mathf.Abs(0));
         rigidBody.velocity = Vector2.zero;
-        StopFootstepAudio();
     }
 
     private void Update()
@@ -54,16 +59,22 @@ public class PlayerController : MonoBehaviour
     {
         xAxis = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("xAxis", Mathf.Abs(xAxis));
-        rigidBody.velocity = new Vector2(xAxis * movementSpeed, rigidBody.velocity.y);
+        float currentSpeed = movementSpeed;
 
-        if (xAxis != 0 && gameObject.activeSelf)
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            PlayFootstepAudio();
+            currentSpeed *= sprintSpeedMultiplier;
         }
-        else
+
+        if (rigidBody.bodyType == RigidbodyType2D.Dynamic)
         {
-            StopFootstepAudio();
+            rigidBody.velocity = new Vector2(xAxis * currentSpeed, rigidBody.velocity.y);
         }
+
+        animator.speed = Mathf.Abs(currentSpeed) * animationSpeedFactor;
+        animator.SetFloat("xAxis", Mathf.Abs(xAxis));
+
+        rigidBody.sharedMaterial = xAxis != 0 ? smoothMaterial : frictionMaterial;
 
         if (xAxis < 0 && isFacingRight || xAxis > 0 && !isFacingRight)
         {
@@ -79,48 +90,33 @@ public class PlayerController : MonoBehaviour
         transform.localScale = currentScale;
     }
 
-    private void PlayFootstepAudio()
+    // This method will be called via animation events
+    public void PlayFootstepAudio()
     {
-        if (!footstepAudioSource.isPlaying)
-        {
-            footstepAudioSource.clip = footstepAudioClip[pos];
-            footstepAudioSource.loop = true;
-            footstepAudioSource.Play();
-        }
-    }
+        // Determine which footstep sound to play
+        AudioClip[] footstepClips = isLeftFootNext ? leftFootstepAudioClips : rightFootstepAudioClips;
+        int randomIndex = Random.Range(0, footstepClips.Length);
 
-    private void StopFootstepAudio()
-    {
-        if (footstepAudioSource.isPlaying)
-        {
-            footstepAudioSource.Stop();
-        }
+        footstepAudioSource.clip = footstepClips[randomIndex];
+        footstepAudioSource.Play();
 
-    }
-    
-    private void ChangeFootstepAudio()
-    {
-        StopFootstepAudio();
-        PlayFootstepAudio();
+        // Alternate between left and right foot
+        isLeftFootNext = !isLeftFootNext;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Indoor"))
+        if (collision.gameObject.CompareTag("Indoor"))
         {
-            pos = 1;
-
-            ChangeFootstepAudio();
+            // You can modify or adjust footstep sounds if needed when entering an indoor area
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Indoor"))
+        if (collision.gameObject.CompareTag("Indoor"))
         {
-            pos = 0;
-
-            ChangeFootstepAudio();
+            // You can modify or adjust footstep sounds if needed when exiting an indoor area
         }
     }
 }
