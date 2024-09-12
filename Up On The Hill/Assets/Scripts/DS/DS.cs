@@ -91,7 +91,7 @@ public class DS : MonoBehaviour
         }
     }
 
-    IEnumerator TypeLine()
+    private IEnumerator TypeLine()
     {
         if (lines.Length != 0)
         {
@@ -103,6 +103,7 @@ public class DS : MonoBehaviour
             }
 
             lineEnded = true;
+            yield return new WaitForSeconds(nextDelay);
             indicatorIcon.enabled = true;
         }
     }
