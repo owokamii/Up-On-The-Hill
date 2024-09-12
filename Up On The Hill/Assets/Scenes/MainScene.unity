@@ -13199,6 +13199,7 @@ GameObject:
   - component: {fileID: 137644086}
   - component: {fileID: 137644088}
   - component: {fileID: 137644087}
+  - component: {fileID: 137644089}
   m_Layer: 0
   m_Name: Lizard_2
   m_TagString: Untagged
@@ -13294,6 +13295,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &137644089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137644085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b9ccc128ffcb940a85f565e01c0d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 137644087}
+  animationStates:
+  - LizardTongue
+  - LizardTail
+  idleTime: 3
 --- !u!1 &149591680
 GameObject:
   m_ObjectHideFlags: 0
@@ -14181,7 +14199,7 @@ Transform:
   m_GameObject: {fileID: 183274056}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.00001, y: -0.03, z: 0}
+  m_LocalPosition: {x: -23.00002, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19453,7 +19471,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.210987, y: -0.59915996, z: -10}
+  m_LocalPosition: {x: -37.211, y: -0.59916997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30815,7 +30833,7 @@ Transform:
   m_GameObject: {fileID: 819856864}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 71.40001, y: 1.3900001, z: 0}
+  m_LocalPosition: {x: 71.4, y: 1.3900001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50791,6 +50809,7 @@ GameObject:
   - component: {fileID: 1415396789}
   - component: {fileID: 1415396791}
   - component: {fileID: 1415396790}
+  - component: {fileID: 1415396792}
   m_Layer: 0
   m_Name: Lizard_3
   m_TagString: Untagged
@@ -50886,6 +50905,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1415396792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415396788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b9ccc128ffcb940a85f565e01c0d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1415396790}
+  animationStates:
+  - LizardTongue
+  - LizardTail
+  idleTime: 3
 --- !u!1 &1420005452
 GameObject:
   m_ObjectHideFlags: 0
@@ -52627,6 +52663,7 @@ GameObject:
   - component: {fileID: 1493413106}
   - component: {fileID: 1493413108}
   - component: {fileID: 1493413107}
+  - component: {fileID: 1493413109}
   m_Layer: 0
   m_Name: Lizard_1
   m_TagString: Untagged
@@ -52722,6 +52759,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1493413109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493413105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b9ccc128ffcb940a85f565e01c0d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1493413107}
+  animationStates:
+  - LizardTongue
+  - LizardTail
+  idleTime: 3
 --- !u!1 &1497738092
 GameObject:
   m_ObjectHideFlags: 0
@@ -62124,7 +62178,7 @@ Transform:
   m_GameObject: {fileID: 1740542227}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.999993, y: -1.75, z: 0}
+  m_LocalPosition: {x: 12.999988, y: -1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
