@@ -66,13 +66,11 @@ public class R_Event : MonoBehaviour
 
     private void EnableSpeechBubble()
     {
-        Debug.Log("enable");
         playerController.enabled = true;
     }
 
     private void DisableSpeechBubble()
     {
-        Debug.Log("disable");
         playerController.enabled = false;
     }
 

@@ -14199,7 +14199,7 @@ Transform:
   m_GameObject: {fileID: 183274056}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.00002, y: -0.03, z: 0}
+  m_LocalPosition: {x: -23.000006, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19471,7 +19471,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.211, y: -0.59916997, z: -10}
+  m_LocalPosition: {x: -37.210983, y: -0.59915996, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30833,7 +30833,7 @@ Transform:
   m_GameObject: {fileID: 819856864}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 71.4, y: 1.3900001, z: 0}
+  m_LocalPosition: {x: 71.40001, y: 1.3900001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39517,6 +39517,7 @@ MonoBehaviour:
   indoorCamera: {fileID: 95643380}
   cameraZoomOut: 12
   transitionDuration: 10
+  cameraOffset: {x: 0, y: 20, z: 0}
 --- !u!1 &1022383937
 GameObject:
   m_ObjectHideFlags: 0
@@ -62178,7 +62179,7 @@ Transform:
   m_GameObject: {fileID: 1740542227}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.999988, y: -1.75, z: 0}
+  m_LocalPosition: {x: 12.999995, y: -1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
