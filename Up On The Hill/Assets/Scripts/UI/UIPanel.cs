@@ -1,20 +1,24 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIFade : MonoBehaviour
 {
     [Header("Game Components")]
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private Image nextIndicator;
 
     [Header("Parameters")]
     [SerializeField] private float targetAlpha;
     [SerializeField] private float transitionDuration;
     [SerializeField] private bool startCantMove;
+    [SerializeField] private float nextDelay = 0.3f;
 
     private Coroutine fadeCoroutine;
     private bool disableSelf;
     private bool coroutineEnded;
+    private bool canPress = false;
 
     private void Start()
     {
@@ -28,14 +32,11 @@ public class UIFade : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Interact"))
+        if(Input.GetButtonDown("Interact") && coroutineEnded && canPress)
         {
-            if(coroutineEnded)
-            {
-                coroutineEnded = false;
-                disableSelf = true;
-                FadeTo(-targetAlpha);
-            }
+            coroutineEnded = false;
+            disableSelf = true;
+            FadeTo(-targetAlpha);
         }
     }
 
@@ -64,9 +65,12 @@ public class UIFade : MonoBehaviour
 
         canvasGroup.alpha = targetAlphaValue;
 
-        if(!coroutineEnded)
+        if (!coroutineEnded && targetAlphaValue == 1f)
         {
+            nextIndicator.enabled = true;
             coroutineEnded = true;
+            yield return new WaitForSeconds(nextDelay);
+            canPress = true;
         }
 
         if (disableSelf)

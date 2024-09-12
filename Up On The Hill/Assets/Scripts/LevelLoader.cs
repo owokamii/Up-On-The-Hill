@@ -10,19 +10,23 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private bool keyPress;
 
     private int levelToLoad;
+    private bool isTransitioning = false;
 
     private void Update()
     {
-        if(Input.GetButtonDown("Interact"))
+        if(Input.GetButtonDown("Interact") && !isTransitioning)
         {
             if(keyPress)
             {
-                if(SceneManager.GetActiveScene().buildIndex == 2)
+                isTransitioning = true;
+
+                if (SceneManager.GetActiveScene().buildIndex == 2)
                 {
                     FadeToLevel(0);
                 }
                 else
                 {
+                    Debug.Log("next level");
                     FindObjectOfType<AudioManager>().PlaySFX("5");
                     FadeToNextLevel();
                 }
@@ -44,5 +48,6 @@ public class LevelLoader : MonoBehaviour
     public void OnFadeComplete()
     {
         SceneManager.LoadScene(levelToLoad);
+        isTransitioning = false;
     }
 }

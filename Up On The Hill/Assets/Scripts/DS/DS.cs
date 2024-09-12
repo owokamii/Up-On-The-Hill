@@ -13,10 +13,12 @@ public class DS : MonoBehaviour
     [SerializeField] private string[] lines;
     [SerializeField] private float textSpeed;
     [SerializeField] private float invokeTime = 2.0f;
+    [SerializeField] private float nextDelay = 0.3f;
     [SerializeField] private bool disableAuto;
 
     private int index;
     private bool lineEnded;
+    private bool isWaiting = false;
 
     private void OnEnable()
     {
@@ -46,17 +48,27 @@ public class DS : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Interact") && lineEnded)
+        if (Input.GetButtonDown("Interact") && lineEnded && !isWaiting)
         {
-            if (NPCDialogue.text == lines[index])
-            {
-                NextLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-            }
+            StartCoroutine(DelayBeforeNextLine());
         }
+    }
+
+    private IEnumerator DelayBeforeNextLine()
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(nextDelay);
+
+        if (NPCDialogue.text == lines[index])
+        {
+            NextLine();
+        }
+        else
+        {
+            StopAllCoroutines();
+        }
+
+        isWaiting = false;
     }
 
     private void NextLine()
@@ -81,7 +93,7 @@ public class DS : MonoBehaviour
 
     IEnumerator TypeLine()
     {
-        if (!(lines.Length == 0))
+        if (lines.Length != 0)
         {
             foreach (char c in lines[index].ToCharArray())
             {
