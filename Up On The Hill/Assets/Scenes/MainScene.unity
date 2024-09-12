@@ -1200,6 +1200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1083272611}
   NPCIcon: {fileID: 1766105727}
+  indicatorIcon: {fileID: 0}
   lines:
   - Today is mom's birthday.
   - Happy birthday mom!
@@ -3528,6 +3529,112 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &137644085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 137644086}
+  - component: {fileID: 137644088}
+  - component: {fileID: 137644087}
+  m_Layer: 0
+  m_Name: Lizard_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &137644086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137644085}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.8776605, w: 0.47928292}
+  m_LocalPosition: {x: 25.09, y: 8.05, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1562311835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -122.723}
+--- !u!95 &137644087
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137644085}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4faee8ff3a9ab054cb58b2f110e9066a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &137644088
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137644085}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 234692331
+  m_SortingLayer: 8
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 3d892a93e03dfc74a9f9299b4b3d9eef, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.29, y: 3.44}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &149591680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4396,8 +4503,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 183274057}
+  - component: {fileID: 183274058}
   m_Layer: 0
-  m_Name: Sky
+  m_Name: Layer-0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4412,7 +4520,7 @@ Transform:
   m_GameObject: {fileID: 183274056}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15, y: -0.03, z: 0}
+  m_LocalPosition: {x: -22.999996, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4421,6 +4529,19 @@ Transform:
   - {fileID: 1414979798}
   m_Father: {fileID: 1499655240}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &183274058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183274056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b192e46a91cc264c8b969304aa2da42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxFactor: 0.83
 --- !u!1 &185748509
 GameObject:
   m_ObjectHideFlags: 0
@@ -5238,6 +5359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1087271419}
   NPCIcon: {fileID: 186044952}
+  indicatorIcon: {fileID: 0}
   lines:
   - I don't think I have enough flowers yet ...
   textSpeed: 0.05
@@ -5334,6 +5456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 2137081648}
   NPCIcon: {fileID: 456899309}
+  indicatorIcon: {fileID: 0}
   lines:
   - ke ke ke ...
   textSpeed: 0.05
@@ -7211,6 +7334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1395022381}
   NPCIcon: {fileID: 364505891}
+  indicatorIcon: {fileID: 0}
   lines:
   - Thank you so much sweetie.
   - Here's the key for the gate.
@@ -9543,6 +9667,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -9662,7 +9787,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.21098, y: -0.59915996, z: -10}
+  m_LocalPosition: {x: -37.210987, y: -0.59916997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9702,6 +9827,18 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01319e79c3e5ca547adcdc5dbc82eaa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &523232834
 GameObject:
   m_ObjectHideFlags: 0
@@ -11600,6 +11737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1768633569}
   NPCIcon: {fileID: 580846199}
+  indicatorIcon: {fileID: 0}
   lines:
   - I can unlock the gate now.
   textSpeed: 0.05
@@ -11696,6 +11834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1796030902}
   NPCIcon: {fileID: 1346199713}
+  indicatorIcon: {fileID: 0}
   lines:
   - Hold on a second.
   - Yes sweetie, what's wrong?
@@ -12295,6 +12434,97 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599085361}
   m_CullTransparentMesh: 1
+--- !u!1 &605522126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 605522129}
+  - component: {fileID: 605522128}
+  - component: {fileID: 605522127}
+  - component: {fileID: 605522130}
+  m_Layer: 5
+  m_Name: NextIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &605522127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605522126}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 4a3a7b718089dc74c86b855b700b9f98, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &605522128
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605522126}
+  m_CullTransparentMesh: 1
+--- !u!224 &605522129
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605522126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1830640144}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -490}
+  m_SizeDelta: {x: 329, y: 344.5825}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &605522130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605522126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1030a2582293b48b59a41826be810e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squishedScale: {x: 0.8, y: 0.8, z: 0.8}
+  squishDuration: 0.1
+  bounceBackDuration: 0.2
 --- !u!1 &617030211
 GameObject:
   m_ObjectHideFlags: 0
@@ -20354,6 +20584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 800537145}
   NPCIcon: {fileID: 1839089504}
+  indicatorIcon: {fileID: 0}
   lines:
   - Oh no, my flowers!
   - That darn racoon!
@@ -20868,8 +21099,9 @@ GameObject:
   m_Component:
   - component: {fileID: 819856865}
   - component: {fileID: 819856866}
+  - component: {fileID: 819856867}
   m_Layer: 0
-  m_Name: Hill_2
+  m_Name: Layer-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20884,7 +21116,7 @@ Transform:
   m_GameObject: {fileID: 819856864}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 154.25, y: 1.3900001, z: 0}
+  m_LocalPosition: {x: 71.4, y: 1.3900001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20930,7 +21162,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -409254741
   m_SortingLayer: 1
-  m_SortingOrder: -5
+  m_SortingOrder: -4
   m_Sprite: {fileID: 21300000, guid: 01e61715909012543a540b14cf2d644f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -20942,6 +21174,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &819856867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819856864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b192e46a91cc264c8b969304aa2da42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxFactor: 0.5
 --- !u!1 &822160221
 GameObject:
   m_ObjectHideFlags: 0
@@ -22130,6 +22375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1014086880}
   NPCIcon: {fileID: 1247265168}
+  indicatorIcon: {fileID: 0}
   lines:
   - What lovely flowers you've picked up!
   - Thank you sweetie, your mom would be very happy.
@@ -22480,6 +22726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1701981881}
   NPCIcon: {fileID: 617755771}
+  indicatorIcon: {fileID: 0}
   lines:
   - You placed the flowers on the grave.
   textSpeed: 0.05
@@ -24086,6 +24333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1115628647}
   NPCIcon: {fileID: 311668390}
+  indicatorIcon: {fileID: 605522127}
   lines:
   - Oh hey sweetie, what are you up to?
   - I'm sorry, I'm kinda in the middle of something right now ...
@@ -31719,7 +31967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 258809069}
-  indoorCamera: {fileID: 873530056}
+  cameraTransform: {fileID: 873530056}
   cameraZoomIn: 8
   cameraZoomOut: 16
   transitionDuration: 3
@@ -32278,7 +32526,7 @@ SpriteRenderer:
   m_SortingLayerID: -1921461763
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 50eda429d81c9c84c8b025314772206d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9955e82e87fe2424f848889e64f32c5e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -32357,13 +32605,18 @@ MonoBehaviour:
   speechBubble: {fileID: 299369868}
   cinematicAnimator: {fileID: 551208422}
   mailboxSP: {fileID: 1194537988}
-  mailboxS: {fileID: 21300000, guid: cdafa390064ff914dbe3de618b432032, type: 3}
+  mailboxS:
+  - {fileID: 21300000, guid: e7b7cffc8ae674c45a2e33fc7ac9e6ca, type: 3}
+  - {fileID: 21300000, guid: 2cc01f7dc033a13428bfcbf4bfb1dcf6, type: 3}
+  - {fileID: 21300000, guid: 9955e82e87fe2424f848889e64f32c5e, type: 3}
+  - {fileID: 21300000, guid: 25a5a2ad64f65b04c88e290bf32323ab, type: 3}
   dialogueBox:
   - {fileID: 1234278775}
   - {fileID: 1673255072}
   - {fileID: 2066093192}
   mailPanel: {fileID: 2091240818}
   invokeSpeechBubble: 1.5
+  interactedMailbox_2: 0
 --- !u!1 &1197078049
 GameObject:
   m_ObjectHideFlags: 0
@@ -32903,6 +33156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 206681846}
   NPCIcon: {fileID: 788716214}
+  indicatorIcon: {fileID: 0}
   lines:
   - We don't get mails as much as we used to nowadays.
   textSpeed: 0.05
@@ -33747,6 +34001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1380818578}
   NPCIcon: {fileID: 934078277}
+  indicatorIcon: {fileID: 0}
   lines:
   - It worked!
   - The racoon dropped my flowers.
@@ -34603,6 +34858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1397334535}
   NPCIcon: {fileID: 112129233}
+  indicatorIcon: {fileID: 0}
   lines:
   - I need to get my flowers back!
   textSpeed: 0.05
@@ -40819,6 +41075,112 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1415396788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1415396789}
+  - component: {fileID: 1415396791}
+  - component: {fileID: 1415396790}
+  m_Layer: 0
+  m_Name: Lizard_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1415396789
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415396788}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.9691158, w: 0.24660636}
+  m_LocalPosition: {x: 47.4, y: 10.23, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1562311835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 151.446}
+--- !u!95 &1415396790
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415396788}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4faee8ff3a9ab054cb58b2f110e9066a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &1415396791
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415396788}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 234692331
+  m_SortingLayer: 8
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 3d892a93e03dfc74a9f9299b4b3d9eef, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.29, y: 3.44}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1420005452
 GameObject:
   m_ObjectHideFlags: 0
@@ -41257,6 +41619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 367732822}
   NPCIcon: {fileID: 2103370591}
+  indicatorIcon: {fileID: 0}
   lines:
   - Don't forget about the flowers!
   textSpeed: 0.05
@@ -42547,6 +42910,112 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1493413105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1493413106}
+  - component: {fileID: 1493413108}
+  - component: {fileID: 1493413107}
+  m_Layer: 0
+  m_Name: Lizard_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1493413106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493413105}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.1706683, w: 0.9853286}
+  m_LocalPosition: {x: 36.05, y: 3.46, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1562311835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19.653}
+--- !u!95 &1493413107
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493413105}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4faee8ff3a9ab054cb58b2f110e9066a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &1493413108
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493413105}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 234692331
+  m_SortingLayer: 8
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 3d892a93e03dfc74a9f9299b4b3d9eef, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.29, y: 3.44}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1497738092
 GameObject:
   m_ObjectHideFlags: 0
@@ -42640,6 +43109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1499655240}
+  - component: {fileID: 1499655241}
   m_Layer: 0
   m_Name: ===Background===
   m_TagString: Untagged
@@ -42666,6 +43136,19 @@ Transform:
   - {fileID: 1901665995}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499655241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499655239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27248a94cd82fb242a6e95cc4d2aa245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxCamera: {fileID: 519420034}
 --- !u!1 &1503573383
 GameObject:
   m_ObjectHideFlags: 0
@@ -48156,6 +48639,11 @@ Transform:
   - {fileID: 1880667872}
   - {fileID: 35722738}
   - {fileID: 2082974395}
+  - {fileID: 1493413106}
+  - {fileID: 137644086}
+  - {fileID: 1415396789}
+  - {fileID: 1589959848}
+  - {fileID: 1662453808}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562322841
@@ -48844,6 +49332,131 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582825057}
   m_CullTransparentMesh: 1
+--- !u!1 &1589959847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1589959848}
+  - component: {fileID: 1589959850}
+  - component: {fileID: 1589959849}
+  - component: {fileID: 1589959851}
+  m_Layer: 0
+  m_Name: Ladybug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1589959848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589959847}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.33, y: 0.129, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1562311835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1589959849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589959847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c171af35b12ae4b999f27a9e80f681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolDistance: 3.9
+  minWalkTime: 2
+  maxWalkTime: 6
+  minIdleTime: 5
+  maxIdleTime: 8
+  walkSpeed: 0.5
+--- !u!212 &1589959850
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589959847}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -841922051
+  m_SortingLayer: 5
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 81abddc1aefd61447ad5c9fe44a06ad5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.29, y: 3.44}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!95 &1589959851
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589959847}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 055b99e73c985c9438779515cab31c14, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1594610229
 GameObject:
   m_ObjectHideFlags: 0
@@ -49065,6 +49678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1783019305}
   NPCIcon: {fileID: 1792170521}
+  indicatorIcon: {fileID: 0}
   lines:
   - I can't leave quite yet!
   - Dad is waiting for me up on the hill!
@@ -49200,6 +49814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1582825059}
   NPCIcon: {fileID: 574379525}
+  indicatorIcon: {fileID: 0}
   lines: []
   textSpeed: 0.05
   invokeTime: 2
@@ -49531,6 +50146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1861917968}
   NPCIcon: {fileID: 1223964066}
+  indicatorIcon: {fileID: 0}
   lines:
   - Mom once told me that racoons eat frogs!
   - How scary ...
@@ -50481,6 +51097,131 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1662453807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1662453808}
+  - component: {fileID: 1662453809}
+  - component: {fileID: 1662453810}
+  - component: {fileID: 1662453811}
+  m_Layer: 0
+  m_Name: Worm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1662453808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662453807}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 68, y: -2.935, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1562311835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1662453809
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662453807}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -841922051
+  m_SortingLayer: 5
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: e9a8434f127cdb543b9ed78387e0da72, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.29, y: 3.44}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!95 &1662453810
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662453807}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 258d92439412bb748bc5b63b97c4f414, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1662453811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662453807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c171af35b12ae4b999f27a9e80f681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolDistance: 10
+  minWalkTime: 5
+  maxWalkTime: 10
+  minIdleTime: 1
+  maxIdleTime: 3
+  walkSpeed: 0.3
 --- !u!1 &1663851524
 GameObject:
   m_ObjectHideFlags: 0
@@ -50618,6 +51359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 761161877}
   NPCIcon: {fileID: 632561302}
+  indicatorIcon: {fileID: 0}
   lines:
   - There is a mail inside.
   - I got the mail!
@@ -51655,8 +52397,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1740542228}
   - component: {fileID: 1740542229}
+  - component: {fileID: 1740542230}
   m_Layer: 0
-  m_Name: Hill_1
+  m_Name: Layer-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51671,7 +52414,7 @@ Transform:
   m_GameObject: {fileID: 1740542227}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13, y: -1.75, z: 0}
+  m_LocalPosition: {x: 12.999999, y: -1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51729,6 +52472,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1740542230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740542227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b192e46a91cc264c8b969304aa2da42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxFactor: 0.5
 --- !u!1 &1740773094
 GameObject:
   m_ObjectHideFlags: 0
@@ -52499,6 +53255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 842659503}
   NPCIcon: {fileID: 5086801}
+  indicatorIcon: {fileID: 0}
   lines:
   - Ribbit ribbit.
   - '!!!'
@@ -53931,6 +54688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 528451471}
   NPCIcon: {fileID: 1902954380}
+  indicatorIcon: {fileID: 0}
   lines:
   - You're finally here!
   - Go ahead, just place the flowers on the grave.
@@ -54230,6 +54988,7 @@ RectTransform:
   - {fileID: 2066093193}
   - {fileID: 1983274268}
   - {fileID: 562049054}
+  - {fileID: 605522129}
   m_Father: {fileID: 1927928596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -60428,7 +61187,6 @@ GameObject:
   - component: {fileID: 1896286054}
   - component: {fileID: 1896286057}
   - component: {fileID: 1896286058}
-  - component: {fileID: 1896286059}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -60528,7 +61286,7 @@ MonoBehaviour:
   - {fileID: 1569313036}
   - {fileID: 1400095428}
   movementSpeed: 5
-  sprintSpeedMultiplier: 1.7
+  sprintSpeedMultiplier: 1.65
   animationSpeedFactor: 0.2
   leftFootstepAudioClips:
   - {fileID: 8300000, guid: 9cca3babdbe651b4785811b38e1d3544, type: 3}
@@ -60721,24 +61479,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1896286059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896286051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12dd7b8f73b9a624e90813fe6e780018, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 873530056}
-  minCameraDistance: 0
-  maxCameraDistance: 8
-  zoomInValue: 8
-  zoomOutValue: 16
-  easeDuration: 0.5
 --- !u!1 &1900738487
 GameObject:
   m_ObjectHideFlags: 0
@@ -62360,6 +63100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 542944052}
   NPCIcon: {fileID: 1232945579}
+  indicatorIcon: {fileID: 0}
   lines:
   - The gate seems to be locked ...
   - Maybe I'll ask dad about it.
@@ -63684,6 +64425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1714268377}
   NPCIcon: {fileID: 1908758336}
+  indicatorIcon: {fileID: 0}
   lines:
   - The mailbox seems to be empty now.
   textSpeed: 0.05
@@ -63925,7 +64667,7 @@ ParticleSystem:
   m_GameObject: {fileID: 2072947844}
   serializedVersion: 8
   lengthInSec: 10
-  simulationSpeed: 0.3
+  simulationSpeed: 0.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -69029,6 +69771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDialogue: {fileID: 1527298994}
   NPCIcon: {fileID: 1101960721}
+  indicatorIcon: {fileID: 0}
   lines:
   - I don't think it's going to let go of my flowers.
   - What should I do ...

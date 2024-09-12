@@ -7,7 +7,8 @@ public class DS : MonoBehaviour
 {
     [SerializeField] private TMP_Text NPCDialogue;
     [SerializeField] private Image NPCIcon;
-    
+    [SerializeField] private Image indicatorIcon;
+
     [TextArea(2, 10)]
     [SerializeField] private string[] lines;
     [SerializeField] private float textSpeed;
@@ -19,7 +20,9 @@ public class DS : MonoBehaviour
 
     private void OnEnable()
     {
-        if(disableAuto)
+        indicatorIcon.enabled = false;
+
+        if (disableAuto)
         {
             StartCoroutine(StartDialogue());
         }
@@ -37,17 +40,15 @@ public class DS : MonoBehaviour
     private IEnumerator StartDialogue()
     {
         yield return new WaitForSeconds(invokeTime);
-
         NPCIcon.enabled = true;
-
         StartCoroutine(TypeLine());
     }
 
     private void Update()
     {
-        if(Input.GetButtonDown("Interact") && lineEnded)
+        if (Input.GetButtonDown("Interact") && lineEnded)
         {
-            if(NPCDialogue.text == lines[index])
+            if (NPCDialogue.text == lines[index])
             {
                 NextLine();
             }
@@ -61,8 +62,9 @@ public class DS : MonoBehaviour
     private void NextLine()
     {
         lineEnded = false;
+        indicatorIcon.enabled = false;
 
-        if(index < lines.Length - 1)
+        if (index < lines.Length - 1)
         {
             index++;
             NPCDialogue.text = string.Empty;
@@ -75,7 +77,6 @@ public class DS : MonoBehaviour
             NPCDialogue.text = string.Empty;
             gameObject.SetActive(false);
         }
-
     }
 
     IEnumerator TypeLine()
@@ -90,12 +91,13 @@ public class DS : MonoBehaviour
             }
 
             lineEnded = true;
+            indicatorIcon.enabled = true;
         }
     }
 
     private void UpdateNPCIconPosition()
     {
-        if(NPCIcon != null)
+        if (NPCIcon != null)
         {
             RectTransform iconRT = NPCIcon.rectTransform;
 

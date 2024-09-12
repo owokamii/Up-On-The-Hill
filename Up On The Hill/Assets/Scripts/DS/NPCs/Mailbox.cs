@@ -10,7 +10,7 @@ public class Mailbox : MonoBehaviour
     [SerializeField] private SpriteRenderer speechBubble;
     [SerializeField] private Animator cinematicAnimator;
     [SerializeField] private SpriteRenderer mailboxSP;
-    [SerializeField] private Sprite mailboxS;
+    [SerializeField] private Sprite[] mailboxS;
 
     [Header("Game Objects")]
     [SerializeField] private GameObject[] dialogueBox;
@@ -27,7 +27,7 @@ public class Mailbox : MonoBehaviour
 
     // triggers
     private bool interactedDad_2;
-    private bool interactedMailbox_2;
+    public bool interactedMailbox_2;
     private bool obtainedMail;
 
     // get set
@@ -93,6 +93,15 @@ public class Mailbox : MonoBehaviour
 
     private void UpdateDialogueBefore()
     {
+        if (obtainedMail)
+        {
+            mailboxSP.sprite = mailboxS[1];
+        }
+        else
+        {
+            mailboxSP.sprite = mailboxS[0];
+        }
+
         // event 3.1 - obtained mail
         if (interactedMailbox_2)
         {
@@ -117,9 +126,13 @@ public class Mailbox : MonoBehaviour
 
     private void UpdateDialogueAfter()
     {
-        if (interactedMailbox_2)
+        if (obtainedMail)
         {
-            mailboxSP.sprite = mailboxS;
+            mailboxSP.sprite = mailboxS[3];
+        }
+        else
+        {
+            mailboxSP.sprite = mailboxS[2];
         }
     }
 
