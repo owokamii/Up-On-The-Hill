@@ -22,7 +22,7 @@ public class UIFade : MonoBehaviour
 
     private void Start()
     {
-        if(startCantMove)
+        if (startCantMove)
         {
             playerController.enabled = false;
         }
@@ -32,18 +32,31 @@ public class UIFade : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Interact") && coroutineEnded && canPress)
+        if (Input.GetButtonDown("Interact") && coroutineEnded && canPress)
         {
-            coroutineEnded = false;
-            disableSelf = true;
-            FadeTo(-targetAlpha);
+            StartCoroutine(HandleInteraction());
         }
+    }
+
+    private IEnumerator HandleInteraction()
+    {
+        yield return new WaitForSeconds(nextDelay);
+
+        nextIndicator.enabled = false;
+
+        coroutineEnded = false;
+        disableSelf = true;
+        FadeTo(-targetAlpha);
     }
 
     public void FadeTo(float targetAlphaValue)
     {
         float startAlpha = canvasGroup.alpha;
 
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+        }
         fadeCoroutine = StartCoroutine(FadeCoroutine(startAlpha, targetAlphaValue));
     }
 
@@ -69,11 +82,10 @@ public class UIFade : MonoBehaviour
         {
             nextIndicator.enabled = true;
             coroutineEnded = true;
-            yield return new WaitForSeconds(nextDelay);
             canPress = true;
         }
 
-        if (disableSelf)
+        if (disableSelf && targetAlphaValue < 1f)
         {
             playerController.enabled = true;
             gameObject.SetActive(false);
