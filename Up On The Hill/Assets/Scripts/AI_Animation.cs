@@ -8,7 +8,10 @@ public class RandomAnimationAI : MonoBehaviour
 
     [Header("Animation Settings")]
     [SerializeField] private string[] animationStates;
-    [SerializeField] private float idleTime = 1.0f;
+
+    [Header("Idle Time Settings")]
+    [SerializeField] private float minIdleTime = 1.0f;
+    [SerializeField] private float maxIdleTime = 3.0f;
 
     private void Start()
     {
@@ -33,7 +36,9 @@ public class RandomAnimationAI : MonoBehaviour
 
             yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
-            yield return new WaitForSeconds(idleTime);
+            float randomIdleTime = Random.Range(minIdleTime, maxIdleTime);
+
+            yield return new WaitForSeconds(randomIdleTime);
         }
     }
 }

@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioClip[] leftFootstepAudioClips;
     [SerializeField] private AudioClip[] rightFootstepAudioClips;
+    [SerializeField] private AudioClip[] indoorLeftFootstepAudioClips;
+    [SerializeField] private AudioClip[] indoorRightFootstepAudioClips;
 
     [Header("Materials")]
     [SerializeField] private PhysicsMaterial2D frictionMaterial;
@@ -27,9 +29,8 @@ public class PlayerController : MonoBehaviour
     private float xAxis;
     private bool canMove = true;
     private bool isFacingRight = true;
-
-    // Tracks which foot to play next
     private bool isLeftFootNext = true;
+    private bool isIndoors = false;
 
     public int GetFlowerNum { get => flowerNum; set => flowerNum = value; }
     public bool GetCanMove { get => canMove; set => canMove = value; }
@@ -93,14 +94,14 @@ public class PlayerController : MonoBehaviour
     // This method will be called via animation events
     public void PlayFootstepAudio()
     {
-        // Determine which footstep sound to play
-        AudioClip[] footstepClips = isLeftFootNext ? leftFootstepAudioClips : rightFootstepAudioClips;
-        int randomIndex = Random.Range(0, footstepClips.Length);
+        AudioClip[] footstepClips = isLeftFootNext
+            ? (isIndoors ? indoorLeftFootstepAudioClips : leftFootstepAudioClips)
+            : (isIndoors ? indoorRightFootstepAudioClips : rightFootstepAudioClips);
 
+        int randomIndex = Random.Range(0, footstepClips.Length);
         footstepAudioSource.clip = footstepClips[randomIndex];
         footstepAudioSource.Play();
 
-        // Alternate between left and right foot
         isLeftFootNext = !isLeftFootNext;
     }
 
@@ -108,7 +109,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Indoor"))
         {
-            // You can modify or adjust footstep sounds if needed when entering an indoor area
+            isIndoors = true;
         }
     }
 
@@ -116,7 +117,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Indoor"))
         {
-            // You can modify or adjust footstep sounds if needed when exiting an indoor area
+            isIndoors = false;
         }
     }
 }
