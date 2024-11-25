@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         rigidBody.velocity = Vector2.zero;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (canMove)
         {
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("xAxis", Mathf.Abs(xAxis));
         float currentSpeed = movementSpeed;
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetButton("Sprint"))
         {
             currentSpeed *= sprintSpeedMultiplier;
         }
